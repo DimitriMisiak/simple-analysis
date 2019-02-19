@@ -1,0 +1,1778 @@
+*** Photos sauvees dans /Users/archeops/acq/donnees/streams/tb18m005
+ ____________________________________________________________________________________
+| Lecture continue: tb18m005, du 18.02.19 a 15:21:45 (avec la version 9.42.797)      |
+| Run de labo avec:                                                                  |
+| . Source de calibration en place: neant                                            |
+| . Configuration du blindage: absent                                                |
+| . sampling: inconnu                                                                |
+| . Polar Chal: inconnu                                                              |
+| Note: 20mK 250 400 30 1nA  1.05 Mohms  0.82 Mohms                                  |
+|____________________________________________________________________________________|
+
+ ____________________________________________________________________________________
+| Configuration | IPNL - tests EDW3                                                  |
+|      lue dans | /Users/archeops/acq/prefs-opera/                                   |
+|_______________|____________________________________________________________________|
+
+ ____________________________________________________________________________________
+|                              Connection des detecteurs                             |
+|____________________________________________________________________________________|
+|                        | position |           | prise |    numeriseur   |     |    |
+|       detecteur        | interne  |  capteur  | cryo  | nom         ADC | Rep |hote|
+|________________________|__________|___________|_______|____________|____|_____|____|
+| ok: FID1               |   a1     | chalA     |    01 | BB3#25     |  5 | o23 | .  |
+|                        |          | chalB     |    02 | BB3-c#36   |  5 | o25 | .  |
+|                        |          | ionisA    |    01 | BB3#25     |  1 | o23 | .  |
+|                        |          | ionisB    |       |            |  2 |     |    |
+|                        |          | ionisC    |       |            |  3 |     |    |
+|                        |          | ionisD    |       |            |  4 |     |    |
+|________________________|__________|___________|_______|____________|____|_____|____|
+
+. Selection de certaines voies
+. Opera62: pas concerne
+. Opera25: a utiliser
+. Opera23: a utiliser
+
+
+ ____________________________________________________________________________
+|                           Selection des voies                              |
+|____________________________________________________________________________|
+| entree |    numeriseur    | voie                              | statut     |
+|________|__________________|___________________________________|____________|
+| Opera25 (Boite OPERA, IP 192.168.0.25)                                     |
+|____________________________________________________________________________|
+|    1   |.BB3-c#36         | (indefinie)                       |            |
+|        |                  | (indefinie)                       |            |
+|        |                  | (indefinie)                       |            |
+|        |                  | (indefinie)                       |            |
+|        |                  |+chalB FID1                        | lue        |
+|        |                  | (neant)                           | jetee      |
+|________|__________________|___________________________________|____________|
+| Ecrit: h.FF.15.00.24.03.08.0E                                              |
+| Gestion de BB requise (. = numeriseur de type BB)                          |
+|============================================================================|
+| Opera23 (Boite OPERA, IP 192.168.0.23)                                     |
+|____________________________________________________________________________|
+|    1   |.BB3#25           |+ionisA FID1                       | lue        |
+|        |                  |+ionisB FID1                       | lue        |
+|        |                  |+ionisC FID1                       | lue        |
+|        |                  |+ionisD FID1                       | lue        |
+|        |                  |+chalA FID1                        | lue        |
+|        |                  | (neant)                           | jetee      |
+|________|__________________|___________________________________|____________|
+| Ecrit: h.FF.15.00.24.03.08.0E                                              |
+| Gestion de BB requise (. = numeriseur de type BB)                          |
+|____________________________________________________________________________|
+ _______________________________________________________________
+|         Structure du bloc pour 1 echantillon de temps         |
+|_______________________________________________________________|
+| rang repartiteur      voie                                    |
+|_______________________________________________________________|
+|   1: Opera25          (donnee ignoree)                        |
+|   2: |                (donnee ignoree)                        |
+|   3: |                (donnee ignoree)                        |
+|   4: |                (donnee ignoree)                        |
+|   5: |                chalB FID1                              |
+|   6: |                (donnee ignoree)                        |
+|   7: Opera23          ionisA FID1                             |
+|   8: |                ionisB FID1                             |
+|   9: |                ionisC FID1                             |
+|  10: |                ionisD FID1                             |
+|  11: |                chalA FID1                              |
+|  12: |                (donnee ignoree)                        |
+|_______________________________________________________________|
+ _______________________________________________________________
+|              Liste des repartiteurs utilisables               |
+|_______________________________________________________________|
+|          Opera25 | active                                     |
+|          Opera23 | active                                     |
+|__________________|____________________________________________|
+. Calcul des coefficients du filtre #7: ButH1/10Hz
+
+ _______________________________________________________________ 
+|           Ajustement du tampon de donnees traitees            |
+|_______________________________________________________________|
+| Voie                              |    demande  |   attribue  |
+|___________________________________|_____________|_____________|
+| chalA FID1                        |        4096 |        4096 |
+| chalB FID1                        |        4096 |        4096 |
+| ionisA FID1                       |       50000 |       50000 |
+| ionisB FID1                       |       50000 |       50000 |
+| ionisC FID1                       |       50000 |       50000 |
+| ionisD FID1                       |       50000 |       50000 |
+|___________________________________|_____________|_____________|
+
+ ____________________________________________________________________________________________ 
+|                                    Filtrage par templates                                  |
+|____________________________________________________________________________________________|
+| Voie                | type                 |  Tmont  |  Tdesc1 |  Tdesc2 |  Fact2  | delta |
+|_____________________|______________________|_________|_________|_________|_________|_______|
+| chalA FID1          | Analytique           |  20.160 |   22.34 |  139.00 |   0.138 |  4000 |
+| chalB FID1          | Analytique           |  20.160 |   20.16 |   20.16 |   0.066 |  4000 |
+| ionisA FID1         | ---                  |         |         |         |         |     0 |
+| ionisB FID1         | ---                  |         |         |         |         |     0 |
+| ionisC FID1         | ---                  |         |         |         |         |     0 |
+| ionisD FID1         | ---                  |         |         |         |         |     0 |
+|_____________________|______________________|_________|_________|_________|_________|_______|
+| Template analytique: A(t) = [1 - e(-t/Tm)] * [e(-t/T1) + F2 * e(-t/T2)]                    |
+|____________________________________________________________________________________________|
+
+
+ ____________________________________________________________________________________
+|                                     Traitements                                    |
+|____________________________________________________________________________________|
+| Opera @IP 0.25   |   gains    ADU(nV)| Au vol               | Pretrigger           |
+|..................|...................|......................|......................|
+| (ignoree)        |                   |                      |                      |
+| (ignoree)        |                   |                      |                      |
+| (ignoree)        |                   |                      |                      |
+| (ignoree)        |                   |                      |                      |
+| chalB FID1       |  438 x8.0    -19.6|demodulation  x 1 +30 |ButH1/10Hz        x 1 |
+| (ignoree)        |                   |                      |                      |
+|__________________|___________________|______________________|______________________|
+| Opera @IP 0.23   |   gains    ADU(nV)| Au vol               | Pretrigger           |
+|..................|...................|......................|......................|
+| ionisA FID1      | 1019 x1.0     67.4|neant                 |ButH1/10Hz        x 1 |
+| ionisB FID1      | 1019 x1.0     67.4|neant                 |ButH1/10Hz        x 1 |
+| ionisC FID1      | 1019 x1.0     67.4|neant                 |ButH1/10Hz        x 1 |
+| ionisD FID1      | 1019 x1.0     67.4|neant                 |ButH1/10Hz        x 1 |
+| chalA FID1       |  438 x8.0    -19.6|demodulation  x 1 +30 |ButH1/10Hz        x 1 |
+| (ignoree)        |                   |                      |                      |
+|__________________|___________________|______________________|______________________|
+| Lu               | 12 donnees                                                      |
+| Transmis         | 12 voies                                                        |
+|__________________|_________________________________________________________________|
+| Soustraction du pattern avant filtrage                                             |
+| y compris pendant les evenements                                                   |
+| SAUF pour la voie chalA FID1 (car elle est modulee)                                |
+| SAUF pour la voie chalB FID1 (car elle est modulee)                                |
+| SAUF pour la voie ionisA FID1 (nombre de periodes de calcul = 0)                   |
+| SAUF pour la voie ionisB FID1 (nombre de periodes de calcul = 0)                   |
+| SAUF pour la voie ionisC FID1 (nombre de periodes de calcul = 0)                   |
+| SAUF pour la voie ionisD FID1 (nombre de periodes de calcul = 0)                   |
+|____________________________________________________________________________________|
+
+ ____________________________________________________________________________________
+|                            Pas de sequencement du run                              |
+|____________________________________________________________________________________|
+
+ ____________________________________________________________________________________ 
+|                              Modification des templates                            |
+|____________________________________________________________________________________|
+| Voie                     | Action                                                  |
+|__________________________|_________________________________________________________|
+| chalA FID1               |filtrage demande                                         |
+| chalB FID1               |filtrage demande                                         |
+|__________________________|_________________________________________________________|
+ ____________________________________________________________________________________
+| Pas de recherche d'evenements                                                      |
+|____________________________________________________________________________________|
+
+  . Fichier /Users/archeops/acq/prefs-opera/RunConditions modifie
+ ____________________________________________________________________________________
+|                                   Gestion du run                                   |
+|____________________________________________________________________________________|
+| Acquisition #5 du 18.02.19 (nouveau run, 'tb18m005')                               |
+| Sauvegarde des Donnees brutes dans le repertoire:                                  |
+|   /Users/archeops/acq/donnees/streams/tb18m005                                     |
+| Sauvegarde des status definitifs des numeriseurs dans le fichier:                  |
+|   /Users/archeops/acq/donnees/streams/tb18m005/tb18m005_BB                         |
+| Sauvegarde des status temporaires des numeriseurs dans:                            |
+|   /Users/archeops/acq/donnees/monitoring/StatusBB/BB3#25                           |
+|   /Users/archeops/acq/donnees/monitoring/StatusBB/BB3-c#36                         |
+| Materiel decrit dans le fichier:                                                   |
+|   /Users/archeops/acq/donnees/streams/tb18m005/tb18m005_setup.csv                  |
+| Pas de cahier de manip.                                                            |
+|____________________________________________________________________________________|
+
+Reglages fins:
+  Echantillonnage      : 10.08 us (99.2064 kHz)
+  Synchro D2           : 100 echantillons (une par 1.007 ms, soit 0.992064 kHz)
+  Lecture              : toutes les  5 ms, version 4
+  Duree donnees brutes : 20 secondes
+  Traitement           : toutes les   200   ms (  198 synchros D2)
+  Sequencement         : toutes les    60.00 s (59523 synchros D2)
+  Action utilisateur   : toutes les     0.10 s (   99 synchros D2)
+  Affichage donnees    : toutes les     1.00 s (  992 synchros D2)
+  Profondeur n-tuples  : 1024 evenements
+  Relance UDP          : toutes les   236 s (activee)
+  Trames UDP             echantillons partiels pour une taille maximum
+  Utilisation des repartiteurs:
+  . Repartiteur Opera25 pris en compte
+    | Echantillon : 6 voies;
+    | Trame       : 120 echantillons [1.2096 ms], 1444 octets;
+    | SynchroD3   : 100000 echantillons [1.008 s], derniere trame: #833 avec 40 echantillons.
+  . Repartiteur Opera23 pris en compte
+    | Echantillon : 6 voies;
+    | Trame       : 120 echantillons [1.2096 ms], 1444 octets;
+    | SynchroD3   : 100000 echantillons [1.008 s], derniere trame: #833 avec 40 echantillons.
+  Demarrage detecteurs         : desactive
+  Maintenance detecteurs       : desactivee
+  Synchronisation de demarrage : D3
+  Pas d'arret impose initialement
+  Pas d'affichage des evenements
+* Variable globale SambaPartage[6148] allouee en 0x021CAA00
+* Prise en compte des status et des donnees
+* Trigger: actuellement suspendu
+
+Deroulement:
+-----------
+15:21:45/ Fermeture de la derniere ligne du catalogue
+15:21:45/ Mise a jour du catalogue (/Users/archeops/acq/Catalogue_loc)
+15:21:45/ Pas de demarrage de detecteur
+15:21:45/ Arret de tous les repartiteurs
+15:21:45/ . Arret Boite OPERA @IP 192.168.0.25
+15:21:45/   . Affectation du port 2049 pour la lecture
+15:21:45/   . Ecrit: P.00.01.08
+15:21:45/   . [895126] Transmission arretee
+15:21:45/   . Vidage de la FIFO
+15:21:45/   . Fermeture de la liaison
+15:21:45/ . Arret Boite OPERA @IP 192.168.0.23
+15:21:45/   . Affectation du port 2050 pour la lecture
+15:21:46/   . Ecrit: P.00.02.08
+15:21:46/   . [006731] Transmission arretee
+15:21:46/   . Vidage de la FIFO
+15:21:46/   . Fermeture de la liaison
+15:21:46/ FIFO interne disponible:
+          . pour Opera25: 262142 valeurs
+          . pour Opera23: 262142 valeurs
+15:21:46/ FIFO externe disponible:
+            FIFO IP  ,  1048576 valeurs (validite: 880.800 ms, lecture: 0.6/100 FIFO)
+          FIFO totale:  1048576 valeurs
+          Trames UDP jusque la recues: 17544914, en erreur: 0, jetees: 1633272
+15:21:46/ Demarrage de tous les numeriseurs en mode acquisition
+15:21:46/ . Demarrage de tous les numeriseurs lus par Opera25
+            * Opera25: passage du numeriseur en mode acquisition
+            . Ecrit: W.F0.FF.08.0000
+15:21:46/ . Demarrage de tous les numeriseurs lus par Opera23
+            * Opera23: passage du numeriseur en mode acquisition
+            . Ecrit: W.F0.FF.08.0000
+15:21:46/ Calage prealable sur une synchro D3
+15:21:46/ . Arret Boite OPERA @IP 192.168.0.25
+15:21:46/   . Affectation du port 2049 pour la lecture
+15:21:46/   . Ecrit: P.00.01.08
+15:21:46/   . [147096] Transmission arretee
+15:21:46/   . Vidage de la FIFO
+15:21:46/   . Fermeture de la liaison
+15:21:46/ . Demarrage Boite OPERA @IP 192.168.0.25 [245]
+15:21:46/   . Affectation du port 2049 pour la lecture
+15:21:46/   . Ecrit: P.F5.01.08
+15:21:46/   . [259082] Transmission demarree
+15:21:46/   . [259103] Attente d'une synchro D3, au plus 5 secondes
+15:21:46/     .          Synchro D3 trouvee a la 2eme lecture (trame precedente: #32768)
+              .          Trame de depart: 1416600000/0
+15:21:46/   . [867697] Fin d'attente de synchro D3
+15:21:46/ . Synchro D3 initiale trouvee: 1416600000/0
+15:21:46/ . Arret Boite OPERA @IP 192.168.0.25
+15:21:46/   . Ecrit: P.00.01.08
+15:21:46/   . [878074] Transmission arretee
+15:21:46/   . Vidage de la FIFO
+15:21:46/   . Fermeture de la liaison
+15:21:47/ Demarrage de 2 repartiteurs
+15:21:47/ . Demarrage Boite OPERA @IP 192.168.0.25 [245]
+15:21:47/   . Affectation du port 2049 pour la lecture
+15:21:47/   . Ecrit: P.F5.01.08
+15:21:47/   . [090445] Transmission demarree
+15:21:47/ . Demarrage Boite OPERA @IP 192.168.0.23 [245]
+15:21:47/   . Affectation du port 2050 pour la lecture
+15:21:47/   . Ecrit: P.F5.02.08
+15:21:47/   . [100991] Transmission demarree
+15:21:47/ Recherche d'une synchro D3 commune
+15:21:47/ . Recherche en parallele pour 2 repartiteurs:
+15:21:47/   . Boite OPERA @IP 192.168.0.25:994
+15:21:47/   . Boite OPERA @IP 192.168.0.23:994
+15:21:47/ . [101125] Attente d'une synchro D3, au plus 5 secondes
+15:21:47/   . [101125] Opera25, premiere trame lue: #171
+15:21:47/   . [874627] Opera23: synchro D3 trouvee a la 665eme lecture (trame precedente: #833), donnee #0
+            .          Opera23: trame de depart = 1416700000[0], valeur lue = 000045B8
+15:21:47/   . [876999] Opera25: synchro D3 trouvee a la 667eme lecture (trame precedente: #833), donnee #0
+            .          Opera25: trame de depart = 1416700000[0], valeur lue = 00007FFE
+15:21:47/ . [877109] Fin d'attente de synchro D3
+            . TimeStamp initial du run: 1416700000 (par repartiteur standard)
+          . 2 repartiteurs en service
+          . Duree de synchronisation: 2372 us
+15:21:47/ Date absolue de debut de run  : 1550499707.877230 secondes
+15:21:47/ Pas de maintenance de detecteur
+15:21:47/ Prise en compte des donnees immediate
+15:21:47/ Lecture demarree, tolerance: 50 ms
+15:21:48/ Opera25, etat initial: resynchro=1 / desynchro=3 / perdu=0
+15:21:48/ Opera23, etat initial: resynchro=1 / desynchro=3 / perdu=0
+15:22:03/ Creation du fichier /Users/archeops/acq/donnees/streams/tb18m005/tb18m005_S00
+15:22:03/ Les donnees commencent dans le fichier a l'octet 11742 (0x2dde)
+15:22:03/     6021 donnees brutes sauvegardees x 2 voies
+          soit 35826 octets (0.0 MB) ecrits au total
+15:22:18/     6018 donnees brutes sauvegardees x 2 voies
+          soit 59898 octets (0.1 MB) ecrits au total
+(NumeriseurEtatEnCours) Affichage des numeriseurs demande (pendant l'acquisition)
+(NumeriseurEtatEnCours) Sortie de la fonction avec affichage demande (pendant l'acquisition)
+15:22:26/ Delai entre lectures anormal: 12904 us, niveau piles max precedent: PCI, 0; IP, 13
+(NumeriseurEtatEnCours) Affichage des numeriseurs arrete (pendant l'acquisition)
+(NumeriseurEtatEnCours) Sortie de la fonction avec affichage arrete (pendant l'acquisition)
+15:22:33/     6020 donnees brutes sauvegardees x 2 voies
+          soit 83978 octets (0.1 MB) ecrits au total
+15:22:33/ Delai entre lectures anormal: 17201 us, niveau piles max precedent: PCI, 0; IP, 22
+15:22:48/     6018 donnees brutes sauvegardees x 2 voies
+          soit 108050 octets (0.1 MB) ecrits au total
+15:23:03/     6020 donnees brutes sauvegardees x 2 voies
+          soit 132130 octets (0.1 MB) ecrits au total
+15:23:18/     6021 donnees brutes sauvegardees x 2 voies
+          soit 156214 octets (0.1 MB) ecrits au total
+15:23:18/ Delai entre lectures anormal: 18159 us, niveau piles max precedent: PCI, 0; IP, 23
+15:23:34/     6017 donnees brutes sauvegardees x 2 voies
+          soit 180282 octets (0.2 MB) ecrits au total
+15:23:49/     6020 donnees brutes sauvegardees x 2 voies
+          soit 204362 octets (0.2 MB) ecrits au total
+15:24:04/     6020 donnees brutes sauvegardees x 2 voies
+          soit 228442 octets (0.2 MB) ecrits au total
+15:24:19/     6019 donnees brutes sauvegardees x 2 voies
+          soit 252518 octets (0.2 MB) ecrits au total
+15:24:34/     6018 donnees brutes sauvegardees x 2 voies
+          soit 276590 octets (0.3 MB) ecrits au total
+15:24:49/     6020 donnees brutes sauvegardees x 2 voies
+          soit 300670 octets (0.3 MB) ecrits au total
+15:25:05/     6019 donnees brutes sauvegardees x 2 voies
+          soit 324746 octets (0.3 MB) ecrits au total
+15:25:20/     6020 donnees brutes sauvegardees x 2 voies
+          soit 348826 octets (0.3 MB) ecrits au total
+15:25:35/     6018 donnees brutes sauvegardees x 2 voies
+          soit 372898 octets (0.4 MB) ecrits au total
+15:25:43/   . Ecrit: P.F5.01.08
+15:25:43/   . Ecrit: P.F5.02.08
+15:25:43/ 561379828 octets lus, 2 repartiteurs UDP relances jusqu'a 15:29:39
+15:25:50/     6019 donnees brutes sauvegardees x 2 voies
+          soit 396974 octets (0.4 MB) ecrits au total
+15:26:05/     6021 donnees brutes sauvegardees x 2 voies
+          soit 421058 octets (0.4 MB) ecrits au total
+15:26:20/     6019 donnees brutes sauvegardees x 2 voies
+          soit 445134 octets (0.4 MB) ecrits au total
+15:26:36/     6017 donnees brutes sauvegardees x 2 voies
+          soit 469202 octets (0.4 MB) ecrits au total
+15:26:51/     6020 donnees brutes sauvegardees x 2 voies
+          soit 493282 octets (0.5 MB) ecrits au total
+15:27:06/     6020 donnees brutes sauvegardees x 2 voies
+          soit 517362 octets (0.5 MB) ecrits au total
+15:27:21/     6019 donnees brutes sauvegardees x 2 voies
+          soit 541438 octets (0.5 MB) ecrits au total
+15:27:36/     6020 donnees brutes sauvegardees x 2 voies
+          soit 565518 octets (0.5 MB) ecrits au total
+15:27:43/ Delai entre lectures anormal: 12823 us, niveau piles max precedent: PCI, 0; IP, 38
+15:27:51/     6018 donnees brutes sauvegardees x 2 voies
+          soit 589590 octets (0.6 MB) ecrits au total
+15:27:55/ Delai entre lectures anormal: 11052 us, niveau piles max precedent: PCI, 0; IP, 38
+15:28:07/     6019 donnees brutes sauvegardees x 2 voies
+          soit 613666 octets (0.6 MB) ecrits au total
+15:28:19/ Delai entre lectures anormal: 15305 us, niveau piles max precedent: PCI, 0; IP, 38
+15:28:22/     6020 donnees brutes sauvegardees x 2 voies
+          soit 637746 octets (0.6 MB) ecrits au total
+15:28:37/     6019 donnees brutes sauvegardees x 2 voies
+          soit 661822 octets (0.6 MB) ecrits au total
+15:28:44/ Delai entre lectures anormal: 31289 us, niveau piles max precedent: PCI, 0; IP, 38
+15:28:52/     6018 donnees brutes sauvegardees x 2 voies
+          soit 685894 octets (0.7 MB) ecrits au total
+15:29:07/     6020 donnees brutes sauvegardees x 2 voies
+          soit 709974 octets (0.7 MB) ecrits au total
+15:29:22/     6020 donnees brutes sauvegardees x 2 voies
+          soit 734054 octets (0.7 MB) ecrits au total
+15:29:25/ Delai entre lectures anormal: 20554 us, niveau piles max precedent: PCI, 0; IP, 54
+15:29:38/     6019 donnees brutes sauvegardees x 2 voies
+          soit 758130 octets (0.7 MB) ecrits au total
+15:29:39/   . Ecrit: P.F5.01.08
+15:29:39/   . Ecrit: P.F5.02.08
+15:29:39/ 1124841428 octets lus, 2 repartiteurs UDP relances jusqu'a 15:33:35
+15:29:53/     6018 donnees brutes sauvegardees x 2 voies
+          soit 782202 octets (0.7 MB) ecrits au total
+15:30:08/     6019 donnees brutes sauvegardees x 2 voies
+          soit 806278 octets (0.8 MB) ecrits au total
+15:30:23/ Delai entre lectures anormal: 11817 us, niveau piles max precedent: PCI, 0; IP, 54
+15:30:23/     6020 donnees brutes sauvegardees x 2 voies
+          soit 830358 octets (0.8 MB) ecrits au total
+15:30:38/     6020 donnees brutes sauvegardees x 2 voies
+          soit 854438 octets (0.8 MB) ecrits au total
+15:30:53/     6020 donnees brutes sauvegardees x 2 voies
+          soit 878518 octets (0.8 MB) ecrits au total
+15:31:09/     6018 donnees brutes sauvegardees x 2 voies
+          soit 902590 octets (0.9 MB) ecrits au total
+15:31:24/     6019 donnees brutes sauvegardees x 2 voies
+          soit 926666 octets (0.9 MB) ecrits au total
+15:31:39/     6020 donnees brutes sauvegardees x 2 voies
+          soit 950746 octets (0.9 MB) ecrits au total
+15:31:54/     6018 donnees brutes sauvegardees x 2 voies
+          soit 974818 octets (0.9 MB) ecrits au total
+15:31:54/ Delai entre lectures anormal: 18272 us, niveau piles max precedent: PCI, 0; IP, 54
+15:32:09/     6019 donnees brutes sauvegardees x 2 voies
+          soit 998894 octets (1.0 MB) ecrits au total
+15:32:24/     6021 donnees brutes sauvegardees x 2 voies
+          soit 1022978 octets (1.0 MB) ecrits au total
+15:32:25/ Delai entre lectures anormal: 11062 us, niveau piles max precedent: PCI, 0; IP, 54
+15:32:40/     6018 donnees brutes sauvegardees x 2 voies
+          soit 1047050 octets (1.0 MB) ecrits au total
+15:32:55/     6020 donnees brutes sauvegardees x 2 voies
+          soit 1071130 octets (1.0 MB) ecrits au total
+15:33:10/     6018 donnees brutes sauvegardees x 2 voies
+          soit 1095202 octets (1.0 MB) ecrits au total
+15:33:21/ Delai entre lectures anormal: 12576 us, niveau piles max precedent: PCI, 0; IP, 54
+15:33:22/ Delai entre lectures anormal: 11503 us, niveau piles max precedent: PCI, 0; IP, 54
+15:33:25/     6019 donnees brutes sauvegardees x 2 voies
+          soit 1119278 octets (1.1 MB) ecrits au total
+15:33:26/ Delai entre lectures anormal: 20043 us, niveau piles max precedent: PCI, 0; IP, 54
+15:33:35/   . Ecrit: P.F5.01.08
+15:33:35/   . Ecrit: P.F5.02.08
+15:33:35/ 1688303028 octets lus, 2 repartiteurs UDP relances jusqu'a 15:37:31
+15:33:40/     6020 donnees brutes sauvegardees x 2 voies
+          soit 1143358 octets (1.1 MB) ecrits au total
+15:33:55/     6020 donnees brutes sauvegardees x 2 voies
+          soit 1167438 octets (1.1 MB) ecrits au total
+15:34:11/     6018 donnees brutes sauvegardees x 2 voies
+          soit 1191510 octets (1.1 MB) ecrits au total
+15:34:26/     6019 donnees brutes sauvegardees x 2 voies
+          soit 1215586 octets (1.2 MB) ecrits au total
+15:34:41/     6020 donnees brutes sauvegardees x 2 voies
+          soit 1239666 octets (1.2 MB) ecrits au total
+15:34:56/     6020 donnees brutes sauvegardees x 2 voies
+          soit 1263746 octets (1.2 MB) ecrits au total
+15:35:11/     6018 donnees brutes sauvegardees x 2 voies
+          soit 1287818 octets (1.2 MB) ecrits au total
+15:35:26/     6019 donnees brutes sauvegardees x 2 voies
+          soit 1311894 octets (1.3 MB) ecrits au total
+15:35:42/     6020 donnees brutes sauvegardees x 2 voies
+          soit 1335974 octets (1.3 MB) ecrits au total
+15:35:57/     6019 donnees brutes sauvegardees x 2 voies
+          soit 1360050 octets (1.3 MB) ecrits au total
+15:36:12/     6020 donnees brutes sauvegardees x 2 voies
+          soit 1384130 octets (1.3 MB) ecrits au total
+15:36:25/ Delai entre lectures anormal: 11452 us, niveau piles max precedent: PCI, 0; IP, 54
+15:36:27/     6018 donnees brutes sauvegardees x 2 voies
+          soit 1408202 octets (1.3 MB) ecrits au total
+15:36:42/     6019 donnees brutes sauvegardees x 2 voies
+          soit 1432278 octets (1.4 MB) ecrits au total
+15:36:57/     6020 donnees brutes sauvegardees x 2 voies
+          soit 1456358 octets (1.4 MB) ecrits au total
+15:37:13/     6019 donnees brutes sauvegardees x 2 voies
+          soit 1480434 octets (1.4 MB) ecrits au total
+15:37:28/     6018 donnees brutes sauvegardees x 2 voies
+          soit 1504506 octets (1.4 MB) ecrits au total
+15:37:31/   . Ecrit: P.F5.01.08
+15:37:31/   . Ecrit: P.F5.02.08
+15:37:31/ 2251767516 octets lus, 2 repartiteurs UDP relances jusqu'a 15:41:27
+15:37:43/     6019 donnees brutes sauvegardees x 2 voies
+          soit 1528582 octets (1.5 MB) ecrits au total
+15:37:58/     6021 donnees brutes sauvegardees x 2 voies
+          soit 1552666 octets (1.5 MB) ecrits au total
+15:38:13/     6017 donnees brutes sauvegardees x 2 voies
+          soit 1576734 octets (1.5 MB) ecrits au total
+15:38:29/     6020 donnees brutes sauvegardees x 2 voies
+          soit 1600814 octets (1.5 MB) ecrits au total
+15:38:44/     6020 donnees brutes sauvegardees x 2 voies
+          soit 1624894 octets (1.5 MB) ecrits au total
+15:38:59/     6019 donnees brutes sauvegardees x 2 voies
+          soit 1648970 octets (1.6 MB) ecrits au total
+15:39:14/     6020 donnees brutes sauvegardees x 2 voies
+          soit 1673050 octets (1.6 MB) ecrits au total
+15:39:29/     6018 donnees brutes sauvegardees x 2 voies
+          soit 1697122 octets (1.6 MB) ecrits au total
+15:39:44/     6019 donnees brutes sauvegardees x 2 voies
+          soit 1721198 octets (1.6 MB) ecrits au total
+15:40:00/     6020 donnees brutes sauvegardees x 2 voies
+          soit 1745278 octets (1.7 MB) ecrits au total
+15:40:15/     6020 donnees brutes sauvegardees x 2 voies
+          soit 1769358 octets (1.7 MB) ecrits au total
+15:40:30/     6017 donnees brutes sauvegardees x 2 voies
+          soit 1793426 octets (1.7 MB) ecrits au total
+15:40:45/     6020 donnees brutes sauvegardees x 2 voies
+          soit 1817506 octets (1.7 MB) ecrits au total
+15:40:55/ Delai entre lectures anormal: 16795 us, niveau piles max precedent: PCI, 0; IP, 54
+15:41:00/     6019 donnees brutes sauvegardees x 2 voies
+          soit 1841582 octets (1.8 MB) ecrits au total
+15:41:15/     6020 donnees brutes sauvegardees x 2 voies
+          soit 1865662 octets (1.8 MB) ecrits au total
+15:41:27/   . Ecrit: P.F5.01.08
+15:41:27/   . Ecrit: P.F5.02.08
+15:41:27/ 2815227672 octets lus, 2 repartiteurs UDP relances jusqu'a 15:45:23
+15:41:27/ Delai entre lectures anormal: 15878 us, niveau piles max precedent: PCI, 0; IP, 54
+15:41:31/     6018 donnees brutes sauvegardees x 2 voies
+          soit 1889734 octets (1.8 MB) ecrits au total
+15:41:46/     6019 donnees brutes sauvegardees x 2 voies
+          soit 1913810 octets (1.8 MB) ecrits au total
+15:42:01/     6020 donnees brutes sauvegardees x 2 voies
+          soit 1937890 octets (1.8 MB) ecrits au total
+15:42:16/     6020 donnees brutes sauvegardees x 2 voies
+          soit 1961970 octets (1.9 MB) ecrits au total
+15:42:16/ Delai entre lectures anormal: 17991 us, niveau piles max precedent: PCI, 0; IP, 54
+15:42:31/     6020 donnees brutes sauvegardees x 2 voies
+          soit 1986050 octets (1.9 MB) ecrits au total
+15:42:46/     6018 donnees brutes sauvegardees x 2 voies
+          soit 2010122 octets (1.9 MB) ecrits au total
+15:43:02/     6019 donnees brutes sauvegardees x 2 voies
+          soit 2034198 octets (1.9 MB) ecrits au total
+15:43:17/     6020 donnees brutes sauvegardees x 2 voies
+          soit 2058278 octets (2.0 MB) ecrits au total
+15:43:32/     6109 donnees brutes sauvegardees x 2 voies
+          soit 2082714 octets (2.0 MB) ecrits au total
+15:43:32/ Delai entre lectures anormal: 21859 us, niveau piles max precedent: PCI, 0; IP, 54
+15:43:47/     6008 donnees brutes sauvegardees x 2 voies
+          soit 2106746 octets (2.0 MB) ecrits au total
+15:44:02/     6019 donnees brutes sauvegardees x 2 voies
+          soit 2130822 octets (2.0 MB) ecrits au total
+15:44:18/     6020 donnees brutes sauvegardees x 2 voies
+          soit 2154902 octets (2.1 MB) ecrits au total
+15:44:33/     6019 donnees brutes sauvegardees x 2 voies
+          soit 2178978 octets (2.1 MB) ecrits au total
+15:44:48/     6018 donnees brutes sauvegardees x 2 voies
+          soit 2203050 octets (2.1 MB) ecrits au total
+15:45:03/     6021 donnees brutes sauvegardees x 2 voies
+          soit 2227134 octets (2.1 MB) ecrits au total
+15:45:18/     6018 donnees brutes sauvegardees x 2 voies
+          soit 2251206 octets (2.1 MB) ecrits au total
+15:45:23/   . Ecrit: P.F5.01.08
+15:45:23/   . Ecrit: P.F5.02.08
+15:45:23/ 3378682052 octets lus, 2 repartiteurs UDP relances jusqu'a 15:49:19
+15:45:33/     6019 donnees brutes sauvegardees x 2 voies
+          soit 2275282 octets (2.2 MB) ecrits au total
+15:45:49/     6019 donnees brutes sauvegardees x 2 voies
+          soit 2299358 octets (2.2 MB) ecrits au total
+15:46:04/     6020 donnees brutes sauvegardees x 2 voies
+          soit 2323438 octets (2.2 MB) ecrits au total
+15:46:19/     6019 donnees brutes sauvegardees x 2 voies
+          soit 2347514 octets (2.2 MB) ecrits au total
+15:46:34/     6020 donnees brutes sauvegardees x 2 voies
+          soit 2371594 octets (2.3 MB) ecrits au total
+15:46:49/     6018 donnees brutes sauvegardees x 2 voies
+          soit 2395666 octets (2.3 MB) ecrits au total
+15:47:04/     6019 donnees brutes sauvegardees x 2 voies
+          soit 2419742 octets (2.3 MB) ecrits au total
+15:47:20/     6020 donnees brutes sauvegardees x 2 voies
+          soit 2443822 octets (2.3 MB) ecrits au total
+15:47:35/     6019 donnees brutes sauvegardees x 2 voies
+          soit 2467898 octets (2.4 MB) ecrits au total
+15:47:50/     6021 donnees brutes sauvegardees x 2 voies
+          soit 2491982 octets (2.4 MB) ecrits au total
+15:48:05/     6017 donnees brutes sauvegardees x 2 voies
+          soit 2516050 octets (2.4 MB) ecrits au total
+15:48:20/     6019 donnees brutes sauvegardees x 2 voies
+          soit 2540126 octets (2.4 MB) ecrits au total
+15:48:35/     6020 donnees brutes sauvegardees x 2 voies
+          soit 2564206 octets (2.4 MB) ecrits au total
+15:48:51/     6020 donnees brutes sauvegardees x 2 voies
+          soit 2588286 octets (2.5 MB) ecrits au total
+15:49:06/     6018 donnees brutes sauvegardees x 2 voies
+          soit 2612358 octets (2.5 MB) ecrits au total
+15:49:19/   . Ecrit: P.F5.01.08
+15:49:19/   . Ecrit: P.F5.02.08
+15:49:19/ 3942135956 octets lus, 2 repartiteurs UDP relances jusqu'a 15:53:15
+15:49:21/     6019 donnees brutes sauvegardees x 2 voies
+          soit 2636434 octets (2.5 MB) ecrits au total
+15:49:21/ Delai entre lectures anormal: 17625 us, niveau piles max precedent: PCI, 0; IP, 54
+15:49:36/     6020 donnees brutes sauvegardees x 2 voies
+          soit 2660514 octets (2.5 MB) ecrits au total
+15:49:36/ Delai entre lectures anormal: 18368 us, niveau piles max precedent: PCI, 0; IP, 54
+15:49:51/     6020 donnees brutes sauvegardees x 2 voies
+          soit 2684594 octets (2.6 MB) ecrits au total
+15:50:06/     6017 donnees brutes sauvegardees x 2 voies
+          soit 2708662 octets (2.6 MB) ecrits au total
+15:50:22/     6020 donnees brutes sauvegardees x 2 voies
+          soit 2732742 octets (2.6 MB) ecrits au total
+15:50:25/ Delai entre lectures anormal: 11083 us, niveau piles max precedent: PCI, 0; IP, 54
+15:50:37/     6020 donnees brutes sauvegardees x 2 voies
+          soit 2756822 octets (2.6 MB) ecrits au total
+15:50:52/     6019 donnees brutes sauvegardees x 2 voies
+          soit 2780898 octets (2.7 MB) ecrits au total
+15:51:07/     6020 donnees brutes sauvegardees x 2 voies
+          soit 2804978 octets (2.7 MB) ecrits au total
+15:51:22/     6018 donnees brutes sauvegardees x 2 voies
+          soit 2829050 octets (2.7 MB) ecrits au total
+15:51:37/     6019 donnees brutes sauvegardees x 2 voies
+          soit 2853126 octets (2.7 MB) ecrits au total
+15:51:53/     6020 donnees brutes sauvegardees x 2 voies
+          soit 2877206 octets (2.7 MB) ecrits au total
+15:52:08/     6020 donnees brutes sauvegardees x 2 voies
+          soit 2901286 octets (2.8 MB) ecrits au total
+15:52:23/     6018 donnees brutes sauvegardees x 2 voies
+          soit 2925358 octets (2.8 MB) ecrits au total
+15:52:38/     6019 donnees brutes sauvegardees x 2 voies
+          soit 2949434 octets (2.8 MB) ecrits au total
+15:52:53/     6020 donnees brutes sauvegardees x 2 voies
+          soit 2973514 octets (2.8 MB) ecrits au total
+15:53:08/     6018 donnees brutes sauvegardees x 2 voies
+          soit 2997586 octets (2.9 MB) ecrits au total
+15:53:15/   . Ecrit: P.F5.01.08
+15:53:15/   . Ecrit: P.F5.02.08
+15:53:15/ 4505590336 octets lus, 2 repartiteurs UDP relances jusqu'a 15:57:11
+15:53:24/     6019 donnees brutes sauvegardees x 2 voies
+          soit 3021662 octets (2.9 MB) ecrits au total
+15:53:39/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3045742 octets (2.9 MB) ecrits au total
+15:53:54/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3069822 octets (2.9 MB) ecrits au total
+15:54:05/ Delai entre lectures anormal: 33900 us, niveau piles max precedent: PCI, 0; IP, 54
+15:54:05/ Delai entre lectures anormal: 13475 us, niveau piles max precedent: PCI, 0; IP, 68
+15:54:05/ Delai entre lectures anormal: 31337 us, niveau piles max precedent: PCI, 0; IP, 68
+15:54:07/ Delai entre lectures anormal: 30820 us, niveau piles max precedent: PCI, 0; IP, 68
+15:54:07/ Delai entre lectures anormal: 14846 us, niveau piles max precedent: PCI, 0; IP, 68
+15:54:09/     6018 donnees brutes sauvegardees x 2 voies
+          soit 3093894 octets (3.0 MB) ecrits au total
+15:54:11/ Delai entre lectures anormal: 30845 us, niveau piles max precedent: PCI, 0; IP, 68
+15:54:24/     6019 donnees brutes sauvegardees x 2 voies
+          soit 3117970 octets (3.0 MB) ecrits au total
+15:54:36/ Delai entre lectures anormal: 25115 us, niveau piles max precedent: PCI, 0; IP, 68
+15:54:38/ Delai entre lectures anormal: 16912 us, niveau piles max precedent: PCI, 0; IP, 76
+15:54:38/ Delai entre lectures anormal: 25704 us, niveau piles max precedent: PCI, 0; IP, 76
+15:54:38/ Delai entre lectures anormal: 12372 us, niveau piles max precedent: PCI, 0; IP, 76
+15:54:40/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3142050 octets (3.0 MB) ecrits au total
+15:54:45/ Delai entre lectures anormal: 19475 us, niveau piles max precedent: PCI, 0; IP, 76
+15:54:45/ Delai entre lectures anormal: 11679 us, niveau piles max precedent: PCI, 0; IP, 76
+15:54:46/ Delai entre lectures anormal: 12952 us, niveau piles max precedent: PCI, 0; IP, 76
+15:54:53/ Delai entre lectures anormal: 12321 us, niveau piles max precedent: PCI, 0; IP, 76
+15:54:55/     6019 donnees brutes sauvegardees x 2 voies
+          soit 3166126 octets (3.0 MB) ecrits au total
+15:54:56/ Delai entre lectures anormal: 21964 us, niveau piles max precedent: PCI, 0; IP, 76
+15:54:57/ Delai entre lectures anormal: 32781 us, niveau piles max precedent: PCI, 0; IP, 76
+15:54:57/ Delai entre lectures anormal: 11785 us, niveau piles max precedent: PCI, 0; IP, 76
+15:54:57/ Delai entre lectures anormal: 16090 us, niveau piles max precedent: PCI, 0; IP, 76
+15:54:57/ Delai entre lectures anormal: 11937 us, niveau piles max precedent: PCI, 0; IP, 76
+15:54:57/ Delai entre lectures anormal: 14866 us, niveau piles max precedent: PCI, 0; IP, 76
+15:54:58/ Delai entre lectures anormal: 18209 us, niveau piles max precedent: PCI, 0; IP, 76
+15:55:03/ Delai entre lectures anormal: 14377 us, niveau piles max precedent: PCI, 0; IP, 76
+15:55:03/ Delai entre lectures anormal: 11105 us, niveau piles max precedent: PCI, 0; IP, 76
+15:55:10/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3190206 octets (3.0 MB) ecrits au total
+15:55:25/     6017 donnees brutes sauvegardees x 2 voies
+          soit 3214274 octets (3.1 MB) ecrits au total
+15:55:40/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3238354 octets (3.1 MB) ecrits au total
+15:55:50/ Delai entre lectures anormal: 13078 us, niveau piles max precedent: PCI, 0; IP, 76
+15:55:55/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3262434 octets (3.1 MB) ecrits au total
+15:56:11/     6019 donnees brutes sauvegardees x 2 voies
+          soit 3286510 octets (3.1 MB) ecrits au total
+15:56:26/     6018 donnees brutes sauvegardees x 2 voies
+          soit 3310582 octets (3.2 MB) ecrits au total
+15:56:41/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3334662 octets (3.2 MB) ecrits au total
+15:56:55/ Delai entre lectures anormal: 12742 us, niveau piles max precedent: PCI, 0; IP, 76
+15:56:56/     6019 donnees brutes sauvegardees x 2 voies
+          soit 3358738 octets (3.2 MB) ecrits au total
+15:57:11/   . Ecrit: P.F5.01.08
+15:57:11/   . Ecrit: P.F5.02.08
+15:57:11/ 5069067820 octets lus, 2 repartiteurs UDP relances jusqu'a 16:01:07
+15:57:11/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3382818 octets (3.2 MB) ecrits au total
+15:57:26/     6018 donnees brutes sauvegardees x 2 voies
+          soit 3406890 octets (3.2 MB) ecrits au total
+15:57:42/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3430970 octets (3.3 MB) ecrits au total
+15:57:57/     6019 donnees brutes sauvegardees x 2 voies
+          soit 3455046 octets (3.3 MB) ecrits au total
+15:58:12/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3479126 octets (3.3 MB) ecrits au total
+15:58:27/     6018 donnees brutes sauvegardees x 2 voies
+          soit 3503198 octets (3.3 MB) ecrits au total
+15:58:42/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3527278 octets (3.4 MB) ecrits au total
+15:58:57/     6019 donnees brutes sauvegardees x 2 voies
+          soit 3551354 octets (3.4 MB) ecrits au total
+15:59:13/     6019 donnees brutes sauvegardees x 2 voies
+          soit 3575430 octets (3.4 MB) ecrits au total
+15:59:28/     6021 donnees brutes sauvegardees x 2 voies
+          soit 3599514 octets (3.4 MB) ecrits au total
+15:59:43/     6017 donnees brutes sauvegardees x 2 voies
+          soit 3623582 octets (3.5 MB) ecrits au total
+15:59:58/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3647662 octets (3.5 MB) ecrits au total
+16:00:13/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3671742 octets (3.5 MB) ecrits au total
+16:00:28/     6019 donnees brutes sauvegardees x 2 voies
+          soit 3695818 octets (3.5 MB) ecrits au total
+16:00:33/ Delai entre lectures anormal: 32193 us, niveau piles max precedent: PCI, 0; IP, 76
+16:00:33/ Delai entre lectures anormal: 12152 us, niveau piles max precedent: PCI, 0; IP, 76
+16:00:44/     6018 donnees brutes sauvegardees x 2 voies
+          soit 3719890 octets (3.5 MB) ecrits au total
+16:00:59/     6019 donnees brutes sauvegardees x 2 voies
+          soit 3743966 octets (3.6 MB) ecrits au total
+16:01:07/   . Ecrit: P.F5.01.08
+16:01:07/   . Ecrit: P.F5.02.08
+16:01:07/ 5632532308 octets lus, 2 repartiteurs UDP relances jusqu'a 16:05:03
+16:01:14/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3768046 octets (3.6 MB) ecrits au total
+16:01:29/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3792126 octets (3.6 MB) ecrits au total
+16:01:44/     6017 donnees brutes sauvegardees x 2 voies
+          soit 3816194 octets (3.6 MB) ecrits au total
+16:01:55/ Delai entre lectures anormal: 30582 us, niveau piles max precedent: PCI, 0; IP, 76
+16:01:59/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3840274 octets (3.7 MB) ecrits au total
+16:02:15/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3864354 octets (3.7 MB) ecrits au total
+16:02:30/     6019 donnees brutes sauvegardees x 2 voies
+          soit 3888430 octets (3.7 MB) ecrits au total
+16:02:45/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3912510 octets (3.7 MB) ecrits au total
+16:03:00/     6017 donnees brutes sauvegardees x 2 voies
+          soit 3936578 octets (3.8 MB) ecrits au total
+16:03:15/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3960658 octets (3.8 MB) ecrits au total
+16:03:30/     6020 donnees brutes sauvegardees x 2 voies
+          soit 3984738 octets (3.8 MB) ecrits au total
+16:03:46/     6018 donnees brutes sauvegardees x 2 voies
+          soit 4008810 octets (3.8 MB) ecrits au total
+16:04:01/     6019 donnees brutes sauvegardees x 2 voies
+          soit 4032886 octets (3.8 MB) ecrits au total
+16:04:16/     6020 donnees brutes sauvegardees x 2 voies
+          soit 4056966 octets (3.9 MB) ecrits au total
+16:04:31/     6020 donnees brutes sauvegardees x 2 voies
+          soit 4081046 octets (3.9 MB) ecrits au total
+16:04:46/     6019 donnees brutes sauvegardees x 2 voies
+          soit 4105122 octets (3.9 MB) ecrits au total
+16:05:01/     6018 donnees brutes sauvegardees x 2 voies
+          soit 4129194 octets (3.9 MB) ecrits au total
+16:05:03/   . Ecrit: P.F5.01.08
+16:05:03/   . Ecrit: P.F5.02.08
+16:05:03/ 6195993908 octets lus, 2 repartiteurs UDP relances jusqu'a 16:08:59
+16:05:17/     6020 donnees brutes sauvegardees x 2 voies
+          soit 4153274 octets (4.0 MB) ecrits au total
+16:05:32/     6019 donnees brutes sauvegardees x 2 voies
+          soit 4177350 octets (4.0 MB) ecrits au total
+16:05:47/     6020 donnees brutes sauvegardees x 2 voies
+          soit 4201430 octets (4.0 MB) ecrits au total
+16:06:02/     6018 donnees brutes sauvegardees x 2 voies
+          soit 4225502 octets (4.0 MB) ecrits au total
+16:06:17/     6019 donnees brutes sauvegardees x 2 voies
+          soit 4249578 octets (4.1 MB) ecrits au total
+16:06:32/     6020 donnees brutes sauvegardees x 2 voies
+          soit 4273658 octets (4.1 MB) ecrits au total
+16:06:48/     6020 donnees brutes sauvegardees x 2 voies
+          soit 4297738 octets (4.1 MB) ecrits au total
+16:07:03/     6018 donnees brutes sauvegardees x 2 voies
+          soit 4321810 octets (4.1 MB) ecrits au total
+16:07:18/     6019 donnees brutes sauvegardees x 2 voies
+          soit 4345886 octets (4.1 MB) ecrits au total
+16:07:33/     6020 donnees brutes sauvegardees x 2 voies
+          soit 4369966 octets (4.2 MB) ecrits au total
+16:07:48/     6019 donnees brutes sauvegardees x 2 voies
+          soit 4394042 octets (4.2 MB) ecrits au total
+16:08:03/     6021 donnees brutes sauvegardees x 2 voies
+          soit 4418126 octets (4.2 MB) ecrits au total
+16:08:03/ Delai entre lectures anormal: 17854 us, niveau piles max precedent: PCI, 0; IP, 76
+16:08:19/     6016 donnees brutes sauvegardees x 2 voies
+          soit 4442190 octets (4.2 MB) ecrits au total
+16:08:25/ Delai entre lectures anormal: 27223 us, niveau piles max precedent: PCI, 0; IP, 76
+16:08:34/     6020 donnees brutes sauvegardees x 2 voies
+          soit 4466270 octets (4.3 MB) ecrits au total
+16:08:49/     6020 donnees brutes sauvegardees x 2 voies
+          soit 4490350 octets (4.3 MB) ecrits au total
+16:08:59/   . Ecrit: P.F5.01.08
+16:08:59/   . Ecrit: P.F5.02.08
+16:08:59/ 6759445400 octets lus, 2 repartiteurs UDP relances jusqu'a 16:12:55
+16:09:04/     6018 donnees brutes sauvegardees x 2 voies
+          soit 4514422 octets (4.3 MB) ecrits au total
+16:09:19/     6020 donnees brutes sauvegardees x 2 voies
+          soit 4538502 octets (4.3 MB) ecrits au total
+16:09:34/     6019 donnees brutes sauvegardees x 2 voies
+          soit 4562578 octets (4.4 MB) ecrits au total
+16:09:50/     6020 donnees brutes sauvegardees x 2 voies
+          soit 4586658 octets (4.4 MB) ecrits au total
+16:09:55/ Delai entre lectures anormal: 15669 us, niveau piles max precedent: PCI, 0; IP, 76
+16:10:05/     6018 donnees brutes sauvegardees x 2 voies
+          soit 4610730 octets (4.4 MB) ecrits au total
+16:10:20/     6019 donnees brutes sauvegardees x 2 voies
+          soit 4634806 octets (4.4 MB) ecrits au total
+16:10:35/     6020 donnees brutes sauvegardees x 2 voies
+          soit 4658886 octets (4.4 MB) ecrits au total
+16:10:50/     6019 donnees brutes sauvegardees x 2 voies
+          soit 4682962 octets (4.5 MB) ecrits au total
+16:11:05/     6021 donnees brutes sauvegardees x 2 voies
+          soit 4707046 octets (4.5 MB) ecrits au total
+16:11:05/ Delai entre lectures anormal: 17526 us, niveau piles max precedent: PCI, 0; IP, 76
+16:11:21/     6017 donnees brutes sauvegardees x 2 voies
+          soit 4731114 octets (4.5 MB) ecrits au total
+16:11:36/     6020 donnees brutes sauvegardees x 2 voies
+          soit 4755194 octets (4.5 MB) ecrits au total
+16:11:51/     6019 donnees brutes sauvegardees x 2 voies
+          soit 4779270 octets (4.6 MB) ecrits au total
+16:12:06/     6020 donnees brutes sauvegardees x 2 voies
+          soit 4803350 octets (4.6 MB) ecrits au total
+16:12:21/     6018 donnees brutes sauvegardees x 2 voies
+          soit 4827422 octets (4.6 MB) ecrits au total
+16:12:36/     6019 donnees brutes sauvegardees x 2 voies
+          soit 4851498 octets (4.6 MB) ecrits au total
+16:12:52/     6020 donnees brutes sauvegardees x 2 voies
+          soit 4875578 octets (4.6 MB) ecrits au total
+16:12:55/   . Ecrit: P.F5.01.08
+16:12:55/   . Ecrit: P.F5.02.08
+16:12:55/ 7322908444 octets lus, 2 repartiteurs UDP relances jusqu'a 16:16:51
+16:13:07/     6020 donnees brutes sauvegardees x 2 voies
+          soit 4899658 octets (4.7 MB) ecrits au total
+16:13:22/     6017 donnees brutes sauvegardees x 2 voies
+          soit 4923726 octets (4.7 MB) ecrits au total
+16:13:37/     6020 donnees brutes sauvegardees x 2 voies
+          soit 4947806 octets (4.7 MB) ecrits au total
+16:13:52/     6020 donnees brutes sauvegardees x 2 voies
+          soit 4971886 octets (4.7 MB) ecrits au total
+16:14:07/     6019 donnees brutes sauvegardees x 2 voies
+          soit 4995962 octets (4.8 MB) ecrits au total
+16:14:23/     6018 donnees brutes sauvegardees x 2 voies
+          soit 5020034 octets (4.8 MB) ecrits au total
+16:14:38/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5044114 octets (4.8 MB) ecrits au total
+16:14:53/     6019 donnees brutes sauvegardees x 2 voies
+          soit 5068190 octets (4.8 MB) ecrits au total
+16:14:55/ Delai entre lectures anormal: 16894 us, niveau piles max precedent: PCI, 0; IP, 76
+16:15:08/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5092270 octets (4.9 MB) ecrits au total
+16:15:23/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5116350 octets (4.9 MB) ecrits au total
+16:15:38/     6017 donnees brutes sauvegardees x 2 voies
+          soit 5140418 octets (4.9 MB) ecrits au total
+16:15:54/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5164498 octets (4.9 MB) ecrits au total
+16:16:09/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5188578 octets (4.9 MB) ecrits au total
+16:16:24/     6019 donnees brutes sauvegardees x 2 voies
+          soit 5212654 octets (5.0 MB) ecrits au total
+16:16:25/ Delai entre lectures anormal: 25238 us, niveau piles max precedent: PCI, 0; IP, 76
+16:16:39/     6018 donnees brutes sauvegardees x 2 voies
+          soit 5236726 octets (5.0 MB) ecrits au total
+16:16:51/   . Ecrit: P.F5.01.08
+16:16:51/   . Ecrit: P.F5.02.08
+16:16:51/ 7886370044 octets lus, 2 repartiteurs UDP relances jusqu'a 16:20:47
+16:16:51/ Delai entre lectures anormal: 13498 us, niveau piles max precedent: PCI, 0; IP, 76
+16:16:54/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5260806 octets (5.0 MB) ecrits au total
+16:16:55/ Delai entre lectures anormal: 21640 us, niveau piles max precedent: PCI, 0; IP, 76
+16:17:09/     6019 donnees brutes sauvegardees x 2 voies
+          soit 5284882 octets (5.0 MB) ecrits au total
+16:17:25/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5308962 octets (5.1 MB) ecrits au total
+16:17:40/     6018 donnees brutes sauvegardees x 2 voies
+          soit 5333034 octets (5.1 MB) ecrits au total
+16:17:55/     6019 donnees brutes sauvegardees x 2 voies
+          soit 5357110 octets (5.1 MB) ecrits au total
+16:18:10/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5381190 octets (5.1 MB) ecrits au total
+16:18:25/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5405270 octets (5.2 MB) ecrits au total
+16:18:41/     6019 donnees brutes sauvegardees x 2 voies
+          soit 5429346 octets (5.2 MB) ecrits au total
+16:18:56/     6018 donnees brutes sauvegardees x 2 voies
+          soit 5453418 octets (5.2 MB) ecrits au total
+16:19:11/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5477498 octets (5.2 MB) ecrits au total
+16:19:26/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5501578 octets (5.2 MB) ecrits au total
+16:19:41/     6019 donnees brutes sauvegardees x 2 voies
+          soit 5525654 octets (5.3 MB) ecrits au total
+16:19:56/     6018 donnees brutes sauvegardees x 2 voies
+          soit 5549726 octets (5.3 MB) ecrits au total
+16:19:56/ Delai entre lectures anormal: 17309 us, niveau piles max precedent: PCI, 0; IP, 76
+16:20:12/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5573806 octets (5.3 MB) ecrits au total
+16:20:27/     6019 donnees brutes sauvegardees x 2 voies
+          soit 5597882 octets (5.3 MB) ecrits au total
+16:20:42/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5621962 octets (5.4 MB) ecrits au total
+16:20:47/   . Ecrit: P.F5.01.08
+16:20:47/   . Ecrit: P.F5.02.08
+16:20:47/ 8449829724 octets lus, 2 repartiteurs UDP relances jusqu'a 16:24:43
+16:20:57/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5646042 octets (5.4 MB) ecrits au total
+16:21:12/     6017 donnees brutes sauvegardees x 2 voies
+          soit 5670110 octets (5.4 MB) ecrits au total
+16:21:25/ Delai entre lectures anormal: 14344 us, niveau piles max precedent: PCI, 0; IP, 76
+16:21:27/     6019 donnees brutes sauvegardees x 2 voies
+          soit 5694186 octets (5.4 MB) ecrits au total
+16:21:43/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5718266 octets (5.5 MB) ecrits au total
+16:21:58/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5742346 octets (5.5 MB) ecrits au total
+16:22:13/     6018 donnees brutes sauvegardees x 2 voies
+          soit 5766418 octets (5.5 MB) ecrits au total
+16:22:28/     6019 donnees brutes sauvegardees x 2 voies
+          soit 5790494 octets (5.5 MB) ecrits au total
+16:22:43/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5814574 octets (5.5 MB) ecrits au total
+16:22:55/ Delai entre lectures anormal: 12699 us, niveau piles max precedent: PCI, 0; IP, 76
+16:22:58/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5838654 octets (5.6 MB) ecrits au total
+16:23:14/     6018 donnees brutes sauvegardees x 2 voies
+          soit 5862726 octets (5.6 MB) ecrits au total
+16:23:29/     6019 donnees brutes sauvegardees x 2 voies
+          soit 5886802 octets (5.6 MB) ecrits au total
+16:23:44/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5910882 octets (5.6 MB) ecrits au total
+16:23:59/     6018 donnees brutes sauvegardees x 2 voies
+          soit 5934954 octets (5.7 MB) ecrits au total
+16:24:14/     6020 donnees brutes sauvegardees x 2 voies
+          soit 5959034 octets (5.7 MB) ecrits au total
+16:24:25/ Delai entre lectures anormal: 14380 us, niveau piles max precedent: PCI, 0; IP, 76
+16:24:29/     6019 donnees brutes sauvegardees x 2 voies
+          soit 5983110 octets (5.7 MB) ecrits au total
+16:24:43/   . Ecrit: P.F5.01.08
+16:24:43/   . Ecrit: P.F5.02.08
+16:24:43/ 9013297100 octets lus, 2 repartiteurs UDP relances jusqu'a 16:28:39
+16:24:45/     6020 donnees brutes sauvegardees x 2 voies
+          soit 6007190 octets (5.7 MB) ecrits au total
+16:25:00/     6018 donnees brutes sauvegardees x 2 voies
+          soit 6031262 octets (5.8 MB) ecrits au total
+16:25:15/     6019 donnees brutes sauvegardees x 2 voies
+          soit 6055338 octets (5.8 MB) ecrits au total
+16:25:30/     6019 donnees brutes sauvegardees x 2 voies
+          soit 6079414 octets (5.8 MB) ecrits au total
+16:25:45/     6021 donnees brutes sauvegardees x 2 voies
+          soit 6103498 octets (5.8 MB) ecrits au total
+16:26:00/     6017 donnees brutes sauvegardees x 2 voies
+          soit 6127566 octets (5.8 MB) ecrits au total
+16:26:00/ Delai entre lectures anormal: 18628 us, niveau piles max precedent: PCI, 0; IP, 76
+16:26:16/     6020 donnees brutes sauvegardees x 2 voies
+          soit 6151646 octets (5.9 MB) ecrits au total
+16:26:31/     6019 donnees brutes sauvegardees x 2 voies
+          soit 6175722 octets (5.9 MB) ecrits au total
+16:26:46/     6020 donnees brutes sauvegardees x 2 voies
+          soit 6199802 octets (5.9 MB) ecrits au total
+16:27:01/     6019 donnees brutes sauvegardees x 2 voies
+          soit 6223878 octets (5.9 MB) ecrits au total
+16:27:16/     6020 donnees brutes sauvegardees x 2 voies
+          soit 6247958 octets (6.0 MB) ecrits au total
+16:27:31/     6018 donnees brutes sauvegardees x 2 voies
+          soit 6272030 octets (6.0 MB) ecrits au total
+16:27:47/     6020 donnees brutes sauvegardees x 2 voies
+          soit 6296110 octets (6.0 MB) ecrits au total
+16:27:55/ Delai entre lectures anormal: 14661 us, niveau piles max precedent: PCI, 0; IP, 76
+16:28:02/     6020 donnees brutes sauvegardees x 2 voies
+          soit 6320190 octets (6.0 MB) ecrits au total
+16:28:17/     6017 donnees brutes sauvegardees x 2 voies
+          soit 6344258 octets (6.1 MB) ecrits au total
+16:28:32/     6020 donnees brutes sauvegardees x 2 voies
+          soit 6368338 octets (6.1 MB) ecrits au total
+16:28:39/   . Ecrit: P.F5.01.08
+16:28:39/   . Ecrit: P.F5.02.08
+16:28:39/ 9576760144 octets lus, 2 repartiteurs UDP relances jusqu'a 16:32:35
+16:28:47/     6019 donnees brutes sauvegardees x 2 voies
+          soit 6392414 octets (6.1 MB) ecrits au total
+16:29:02/     6020 donnees brutes sauvegardees x 2 voies
+          soit 6416494 octets (6.1 MB) ecrits au total
+16:29:18/     6019 donnees brutes sauvegardees x 2 voies
+          soit 6440570 octets (6.1 MB) ecrits au total
+16:29:25/ Delai entre lectures anormal: 19943 us, niveau piles max precedent: PCI, 0; IP, 76
+16:29:33/     6018 donnees brutes sauvegardees x 2 voies
+          soit 6464642 octets (6.2 MB) ecrits au total
+16:29:48/     6020 donnees brutes sauvegardees x 2 voies
+          soit 6488722 octets (6.2 MB) ecrits au total
+16:30:03/     6020 donnees brutes sauvegardees x 2 voies
+          soit 6512802 octets (6.2 MB) ecrits au total
+16:30:18/     6019 donnees brutes sauvegardees x 2 voies
+          soit 6536878 octets (6.2 MB) ecrits au total
+16:30:33/     6020 donnees brutes sauvegardees x 2 voies
+          soit 6560958 octets (6.3 MB) ecrits au total
+16:30:49/     6018 donnees brutes sauvegardees x 2 voies
+          soit 6585030 octets (6.3 MB) ecrits au total
+16:31:04/     6020 donnees brutes sauvegardees x 2 voies
+          soit 6609110 octets (6.3 MB) ecrits au total
+16:31:19/     6018 donnees brutes sauvegardees x 2 voies
+          soit 6633182 octets (6.3 MB) ecrits au total
+16:31:34/     6019 donnees brutes sauvegardees x 2 voies
+          soit 6657258 octets (6.3 MB) ecrits au total
+16:31:49/     6020 donnees brutes sauvegardees x 2 voies
+          soit 6681338 octets (6.4 MB) ecrits au total
+16:32:04/     6019 donnees brutes sauvegardees x 2 voies
+          soit 6705414 octets (6.4 MB) ecrits au total
+16:32:20/     6020 donnees brutes sauvegardees x 2 voies
+          soit 6729494 octets (6.4 MB) ecrits au total
+16:32:35/   . Ecrit: P.F5.01.08
+16:32:35/   . Ecrit: P.F5.02.08
+16:32:35/ 10140211636 octets lus, 2 repartiteurs UDP relances jusqu'a 16:36:31
+16:32:35/     6019 donnees brutes sauvegardees x 2 voies
+          soit 6753570 octets (6.4 MB) ecrits au total
+16:32:50/     6019 donnees brutes sauvegardees x 2 voies
+          soit 6777646 octets (6.5 MB) ecrits au total
+16:33:05/     6019 donnees brutes sauvegardees x 2 voies
+          soit 6801722 octets (6.5 MB) ecrits au total
+16:33:20/     6019 donnees brutes sauvegardees x 2 voies
+          soit 6825798 octets (6.5 MB) ecrits au total
+16:33:26/ Delai entre lectures anormal: 21168 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:27/ Delai entre lectures anormal: 16317 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:27/ Delai entre lectures anormal: 16911 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:27/ Delai entre lectures anormal: 11797 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:27/ Delai entre lectures anormal: 15157 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:27/ Delai entre lectures anormal: 11510 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:28/ Delai entre lectures anormal: 11333 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:28/ Delai entre lectures anormal: 15505 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:29/ Delai entre lectures anormal: 11236 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:29/ Delai entre lectures anormal: 11756 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:29/ Delai entre lectures anormal: 11101 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:29/ Delai entre lectures anormal: 11728 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:29/ Delai entre lectures anormal: 11920 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:29/ Delai entre lectures anormal: 11104 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:30/ Delai entre lectures anormal: 11493 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:30/ Delai entre lectures anormal: 16088 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:30/ Delai entre lectures anormal: 12054 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:30/ Delai entre lectures anormal: 11094 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:31/ Delai entre lectures anormal: 13710 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:31/ Delai entre lectures anormal: 11681 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:31/ Delai entre lectures anormal: 11115 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:32/ Delai entre lectures anormal: 23466 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:32/ Delai entre lectures anormal: 18900 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:32/ Delai entre lectures anormal: 11036 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:35/     6020 donnees brutes sauvegardees x 2 voies
+          soit 6849878 octets (6.5 MB) ecrits au total
+16:33:37/ Delai entre lectures anormal: 14136 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:38/ Delai entre lectures anormal: 12503 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:38/ Delai entre lectures anormal: 13750 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:39/ Delai entre lectures anormal: 13748 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:44/ Delai entre lectures anormal: 11197 us, niveau piles max precedent: PCI, 0; IP, 76
+16:33:51/     6018 donnees brutes sauvegardees x 2 voies
+          soit 6873950 octets (6.6 MB) ecrits au total
+16:34:06/     6020 donnees brutes sauvegardees x 2 voies
+          soit 6898030 octets (6.6 MB) ecrits au total
+16:34:21/     6019 donnees brutes sauvegardees x 2 voies
+          soit 6922106 octets (6.6 MB) ecrits au total
+16:34:25/ Delai entre lectures anormal: 13039 us, niveau piles max precedent: PCI, 0; IP, 76
+16:34:36/     6019 donnees brutes sauvegardees x 2 voies
+          soit 6946182 octets (6.6 MB) ecrits au total
+16:34:51/     6021 donnees brutes sauvegardees x 2 voies
+          soit 6970266 octets (6.6 MB) ecrits au total
+16:35:06/     6017 donnees brutes sauvegardees x 2 voies
+          soit 6994334 octets (6.7 MB) ecrits au total
+16:35:22/     6019 donnees brutes sauvegardees x 2 voies
+          soit 7018410 octets (6.7 MB) ecrits au total
+16:35:37/     6019 donnees brutes sauvegardees x 2 voies
+          soit 7042486 octets (6.7 MB) ecrits au total
+16:35:52/     6020 donnees brutes sauvegardees x 2 voies
+          soit 7066566 octets (6.7 MB) ecrits au total
+16:35:55/ Delai entre lectures anormal: 11179 us, niveau piles max precedent: PCI, 0; IP, 76
+16:36:07/     6019 donnees brutes sauvegardees x 2 voies
+          soit 7090642 octets (6.8 MB) ecrits au total
+16:36:22/     6020 donnees brutes sauvegardees x 2 voies
+          soit 7114722 octets (6.8 MB) ecrits au total
+16:36:31/   . Ecrit: P.F5.01.08
+16:36:31/   . Ecrit: P.F5.02.08
+16:36:31/ 10703676124 octets lus, 2 repartiteurs UDP relances jusqu'a 16:40:27
+16:36:37/     6020 donnees brutes sauvegardees x 2 voies
+          soit 7138802 octets (6.8 MB) ecrits au total
+16:36:53/     6019 donnees brutes sauvegardees x 2 voies
+          soit 7162878 octets (6.8 MB) ecrits au total
+16:37:08/     6018 donnees brutes sauvegardees x 2 voies
+          soit 7186950 octets (6.9 MB) ecrits au total
+16:37:23/     6019 donnees brutes sauvegardees x 2 voies
+          soit 7211026 octets (6.9 MB) ecrits au total
+16:37:25/ Delai entre lectures anormal: 15990 us, niveau piles max precedent: PCI, 0; IP, 76
+16:37:38/     6020 donnees brutes sauvegardees x 2 voies
+          soit 7235106 octets (6.9 MB) ecrits au total
+16:37:53/     6020 donnees brutes sauvegardees x 2 voies
+          soit 7259186 octets (6.9 MB) ecrits au total
+16:38:08/     6017 donnees brutes sauvegardees x 2 voies
+          soit 7283254 octets (6.9 MB) ecrits au total
+16:38:24/     6020 donnees brutes sauvegardees x 2 voies
+          soit 7307334 octets (7.0 MB) ecrits au total
+16:38:39/     6020 donnees brutes sauvegardees x 2 voies
+          soit 7331414 octets (7.0 MB) ecrits au total
+16:38:54/     6019 donnees brutes sauvegardees x 2 voies
+          soit 7355490 octets (7.0 MB) ecrits au total
+16:39:09/     6018 donnees brutes sauvegardees x 2 voies
+          soit 7379562 octets (7.0 MB) ecrits au total
+16:39:24/     6020 donnees brutes sauvegardees x 2 voies
+          soit 7403642 octets (7.1 MB) ecrits au total
+16:39:39/     6020 donnees brutes sauvegardees x 2 voies
+          soit 7427722 octets (7.1 MB) ecrits au total
+16:39:55/     6018 donnees brutes sauvegardees x 2 voies
+          soit 7451794 octets (7.1 MB) ecrits au total
+16:40:10/     6019 donnees brutes sauvegardees x 2 voies
+          soit 7475870 octets (7.1 MB) ecrits au total
+16:40:25/     6020 donnees brutes sauvegardees x 2 voies
+          soit 7499950 octets (7.2 MB) ecrits au total
+16:40:27/   . Ecrit: P.F5.01.08
+16:40:27/   . Ecrit: P.F5.02.08
+16:40:27/ 11267127616 octets lus, 2 repartiteurs UDP relances jusqu'a 16:44:23
+16:40:40/     6019 donnees brutes sauvegardees x 2 voies
+          soit 7524026 octets (7.2 MB) ecrits au total
+16:40:55/     6020 donnees brutes sauvegardees x 2 voies
+          soit 7548106 octets (7.2 MB) ecrits au total
+16:41:10/     6017 donnees brutes sauvegardees x 2 voies
+          soit 7572174 octets (7.2 MB) ecrits au total
+16:41:26/     6020 donnees brutes sauvegardees x 2 voies
+          soit 7596254 octets (7.2 MB) ecrits au total
+16:41:41/     6020 donnees brutes sauvegardees x 2 voies
+          soit 7620334 octets (7.3 MB) ecrits au total
+16:41:56/     6020 donnees brutes sauvegardees x 2 voies
+          soit 7644414 octets (7.3 MB) ecrits au total
+16:42:11/     6020 donnees brutes sauvegardees x 2 voies
+          soit 7668494 octets (7.3 MB) ecrits au total
+16:42:11/ Delai entre lectures anormal: 19243 us, niveau piles max precedent: PCI, 0; IP, 76
+16:42:26/     6017 donnees brutes sauvegardees x 2 voies
+          soit 7692562 octets (7.3 MB) ecrits au total
+16:42:31/ Delai entre lectures anormal: 14689 us, niveau piles max precedent: PCI, 0; IP, 76
+16:42:31/ Delai entre lectures anormal: 23893 us, niveau piles max precedent: PCI, 0; IP, 76
+16:42:31/ Delai entre lectures anormal: 12054 us, niveau piles max precedent: PCI, 0; IP, 76
+16:42:35/ Delai entre lectures anormal: 18253 us, niveau piles max precedent: PCI, 0; IP, 76
+16:42:42/     6019 donnees brutes sauvegardees x 2 voies
+          soit 7716638 octets (7.4 MB) ecrits au total
+16:42:45/ Delai entre lectures anormal: 12932 us, niveau piles max precedent: PCI, 0; IP, 76
+16:42:54/ Delai entre lectures anormal: 18439 us, niveau piles max precedent: PCI, 0; IP, 76
+16:42:55/ Delai entre lectures anormal: 12884 us, niveau piles max precedent: PCI, 0; IP, 76
+16:42:57/     6020 donnees brutes sauvegardees x 2 voies
+          soit 7740718 octets (7.4 MB) ecrits au total
+16:42:58/ Delai entre lectures anormal: 17660 us, niveau piles max precedent: PCI, 0; IP, 76
+16:42:59/ Delai entre lectures anormal: 29129 us, niveau piles max precedent: PCI, 0; IP, 76
+16:42:59/ Delai entre lectures anormal: 16655 us, niveau piles max precedent: PCI, 0; IP, 76
+16:43:08/ Delai entre lectures anormal: 24126 us, niveau piles max precedent: PCI, 0; IP, 76
+16:43:08/ Delai entre lectures anormal: 12924 us, niveau piles max precedent: PCI, 0; IP, 76
+16:43:08/ Delai entre lectures anormal: 11412 us, niveau piles max precedent: PCI, 0; IP, 76
+16:43:08/ Delai entre lectures anormal: 21514 us, niveau piles max precedent: PCI, 0; IP, 76
+16:43:08/ Delai depuis derniere lecture anormal: 68807 us, relancee avec une tolerance de 100000 us
+16:43:08/ Delai entre lectures trop court: 68885 us
+16:43:08/ Delai entre lectures anormal: 58316 us, niveau piles max precedent: PCI, 0; IP, 76
+16:43:10/ Delai entre lectures anormal: 30094 us, niveau piles max precedent: PCI, 0; IP, 122
+16:43:12/     6018 donnees brutes sauvegardees x 2 voies
+          soit 7764790 octets (7.4 MB) ecrits au total
+16:43:18/ Delai entre lectures anormal: 17743 us, niveau piles max precedent: PCI, 0; IP, 122
+16:43:23/ Delai entre lectures anormal: 18553 us, niveau piles max precedent: PCI, 0; IP, 122
+16:43:23/ Delai entre lectures anormal: 27921 us, niveau piles max precedent: PCI, 0; IP, 122
+16:43:25/ Delai entre lectures anormal: 29610 us, niveau piles max precedent: PCI, 0; IP, 122
+16:43:27/     6019 donnees brutes sauvegardees x 2 voies
+          soit 7788866 octets (7.4 MB) ecrits au total
+16:43:28/ Delai entre lectures anormal: 12124 us, niveau piles max precedent: PCI, 0; IP, 122
+16:43:28/ Delai entre lectures anormal: 21094 us, niveau piles max precedent: PCI, 0; IP, 122
+16:43:28/ Delai entre lectures anormal: 12714 us, niveau piles max precedent: PCI, 0; IP, 122
+16:43:31/ Delai entre lectures anormal: 11312 us, niveau piles max precedent: PCI, 0; IP, 122
+16:43:31/ Delai entre lectures anormal: 12368 us, niveau piles max precedent: PCI, 0; IP, 122
+16:43:42/     6020 donnees brutes sauvegardees x 2 voies
+          soit 7812946 octets (7.5 MB) ecrits au total
+16:43:44/ Delai entre lectures anormal: 11218 us, niveau piles max precedent: PCI, 0; IP, 122
+16:43:49/ Delai entre lectures anormal: 11619 us, niveau piles max precedent: PCI, 0; IP, 122
+16:43:57/     6020 donnees brutes sauvegardees x 2 voies
+          soit 7837026 octets (7.5 MB) ecrits au total
+16:44:07/ Delai entre lectures anormal: 13947 us, niveau piles max precedent: PCI, 0; IP, 122
+16:44:12/ Delai entre lectures anormal: 12088 us, niveau piles max precedent: PCI, 0; IP, 122
+16:44:13/     6019 donnees brutes sauvegardees x 2 voies
+          soit 7861102 octets (7.5 MB) ecrits au total
+16:44:16/ Delai entre lectures anormal: 12393 us, niveau piles max precedent: PCI, 0; IP, 122
+16:44:23/   . Ecrit: P.F5.01.08
+16:44:23/   . Ecrit: P.F5.02.08
+16:44:23/ 11830596436 octets lus, 2 repartiteurs UDP relances jusqu'a 16:48:19
+16:44:28/     6019 donnees brutes sauvegardees x 2 voies
+          soit 7885178 octets (7.5 MB) ecrits au total
+16:44:43/     6019 donnees brutes sauvegardees x 2 voies
+          soit 7909254 octets (7.5 MB) ecrits au total
+16:44:58/     6019 donnees brutes sauvegardees x 2 voies
+          soit 7933330 octets (7.6 MB) ecrits au total
+16:45:13/     6020 donnees brutes sauvegardees x 2 voies
+          soit 7957410 octets (7.6 MB) ecrits au total
+16:45:23/ Delai entre lectures anormal: 12279 us, niveau piles max precedent: PCI, 0; IP, 122
+16:45:28/     6018 donnees brutes sauvegardees x 2 voies
+          soit 7981482 octets (7.6 MB) ecrits au total
+16:45:44/     6019 donnees brutes sauvegardees x 2 voies
+          soit 8005558 octets (7.6 MB) ecrits au total
+16:45:59/     6020 donnees brutes sauvegardees x 2 voies
+          soit 8029638 octets (7.7 MB) ecrits au total
+16:46:14/     6020 donnees brutes sauvegardees x 2 voies
+          soit 8053718 octets (7.7 MB) ecrits au total
+16:46:29/     6020 donnees brutes sauvegardees x 2 voies
+          soit 8077798 octets (7.7 MB) ecrits au total
+16:46:44/     6018 donnees brutes sauvegardees x 2 voies
+          soit 8101870 octets (7.7 MB) ecrits au total
+16:46:59/     6019 donnees brutes sauvegardees x 2 voies
+          soit 8125946 octets (7.7 MB) ecrits au total
+16:47:15/     6020 donnees brutes sauvegardees x 2 voies
+          soit 8150026 octets (7.8 MB) ecrits au total
+16:47:25/ Delai entre lectures anormal: 21595 us, niveau piles max precedent: PCI, 0; IP, 122
+16:47:25/ Delai entre lectures anormal: 18622 us, niveau piles max precedent: PCI, 0; IP, 122
+16:47:30/     6018 donnees brutes sauvegardees x 2 voies
+          soit 8174098 octets (7.8 MB) ecrits au total
+16:47:45/     6019 donnees brutes sauvegardees x 2 voies
+          soit 8198174 octets (7.8 MB) ecrits au total
+16:48:00/     6020 donnees brutes sauvegardees x 2 voies
+          soit 8222254 octets (7.8 MB) ecrits au total
+16:48:15/     6019 donnees brutes sauvegardees x 2 voies
+          soit 8246330 octets (7.9 MB) ecrits au total
+16:48:19/   . Ecrit: P.F5.01.08
+16:48:19/   . Ecrit: P.F5.02.08
+16:48:19/ 12394059480 octets lus, 2 repartiteurs UDP relances jusqu'a 16:52:15
+16:48:30/     6019 donnees brutes sauvegardees x 2 voies
+          soit 8270406 octets (7.9 MB) ecrits au total
+16:48:46/     6019 donnees brutes sauvegardees x 2 voies
+          soit 8294482 octets (7.9 MB) ecrits au total
+16:48:55/ Delai entre lectures anormal: 15202 us, niveau piles max precedent: PCI, 0; IP, 122
+16:49:01/     6019 donnees brutes sauvegardees x 2 voies
+          soit 8318558 octets (7.9 MB) ecrits au total
+16:49:16/     6020 donnees brutes sauvegardees x 2 voies
+          soit 8342638 octets (8.0 MB) ecrits au total
+16:49:31/     6020 donnees brutes sauvegardees x 2 voies
+          soit 8366718 octets (8.0 MB) ecrits au total
+16:49:46/     6017 donnees brutes sauvegardees x 2 voies
+          soit 8390786 octets (8.0 MB) ecrits au total
+16:50:01/     6020 donnees brutes sauvegardees x 2 voies
+          soit 8414866 octets (8.0 MB) ecrits au total
+16:50:17/     6019 donnees brutes sauvegardees x 2 voies
+          soit 8438942 octets (8.0 MB) ecrits au total
+16:50:25/ Delai entre lectures anormal: 11012 us, niveau piles max precedent: PCI, 0; IP, 122
+16:50:32/     6021 donnees brutes sauvegardees x 2 voies
+          soit 8463026 octets (8.1 MB) ecrits au total
+16:50:47/     6019 donnees brutes sauvegardees x 2 voies
+          soit 8487102 octets (8.1 MB) ecrits au total
+16:51:02/     6018 donnees brutes sauvegardees x 2 voies
+          soit 8511174 octets (8.1 MB) ecrits au total
+16:51:17/     6020 donnees brutes sauvegardees x 2 voies
+          soit 8535254 octets (8.1 MB) ecrits au total
+16:51:32/     6019 donnees brutes sauvegardees x 2 voies
+          soit 8559330 octets (8.2 MB) ecrits au total
+16:51:48/     6018 donnees brutes sauvegardees x 2 voies
+          soit 8583402 octets (8.2 MB) ecrits au total
+16:52:03/     6020 donnees brutes sauvegardees x 2 voies
+          soit 8607482 octets (8.2 MB) ecrits au total
+16:52:03/ Delai entre lectures anormal: 12800 us, niveau piles max precedent: PCI, 0; IP, 122
+16:52:15/   . Ecrit: P.F5.01.08
+16:52:15/   . Ecrit: P.F5.02.08
+16:52:15/ 12957520604 octets lus, 2 repartiteurs UDP relances jusqu'a 16:56:11
+16:52:15/ Delai entre lectures anormal: 13339 us, niveau piles max precedent: PCI, 0; IP, 122
+16:52:18/     6019 donnees brutes sauvegardees x 2 voies
+          soit 8631558 octets (8.2 MB) ecrits au total
+16:52:33/     6020 donnees brutes sauvegardees x 2 voies
+          soit 8655638 octets (8.3 MB) ecrits au total
+16:52:48/     6019 donnees brutes sauvegardees x 2 voies
+          soit 8679714 octets (8.3 MB) ecrits au total
+16:53:03/     6018 donnees brutes sauvegardees x 2 voies
+          soit 8703786 octets (8.3 MB) ecrits au total
+16:53:04/ Delai entre lectures anormal: 14150 us, niveau piles max precedent: PCI, 0; IP, 122
+16:53:19/     6020 donnees brutes sauvegardees x 2 voies
+          soit 8727866 octets (8.3 MB) ecrits au total
+16:53:31/ Delai entre lectures anormal: 12479 us, niveau piles max precedent: PCI, 0; IP, 122
+16:53:34/     6020 donnees brutes sauvegardees x 2 voies
+          soit 8751946 octets (8.3 MB) ecrits au total
+16:53:36/ Delai entre lectures anormal: 11044 us, niveau piles max precedent: PCI, 0; IP, 122
+16:53:49/     6019 donnees brutes sauvegardees x 2 voies
+          soit 8776022 octets (8.4 MB) ecrits au total
+16:54:04/     6020 donnees brutes sauvegardees x 2 voies
+          soit 8800102 octets (8.4 MB) ecrits au total
+16:54:19/     6018 donnees brutes sauvegardees x 2 voies
+          soit 8824174 octets (8.4 MB) ecrits au total
+16:54:21/ Delai entre lectures anormal: 11336 us, niveau piles max precedent: PCI, 0; IP, 122
+16:54:34/     6019 donnees brutes sauvegardees x 2 voies
+          soit 8848250 octets (8.4 MB) ecrits au total
+16:54:50/     6020 donnees brutes sauvegardees x 2 voies
+          soit 8872330 octets (8.5 MB) ecrits au total
+16:55:05/     6018 donnees brutes sauvegardees x 2 voies
+          soit 8896402 octets (8.5 MB) ecrits au total
+16:55:05/ Delai entre lectures anormal: 19078 us, niveau piles max precedent: PCI, 0; IP, 122
+16:55:20/     6019 donnees brutes sauvegardees x 2 voies
+          soit 8920478 octets (8.5 MB) ecrits au total
+16:55:35/     6019 donnees brutes sauvegardees x 2 voies
+          soit 8944554 octets (8.5 MB) ecrits au total
+16:55:50/     6019 donnees brutes sauvegardees x 2 voies
+          soit 8968630 octets (8.6 MB) ecrits au total
+16:56:05/     6019 donnees brutes sauvegardees x 2 voies
+          soit 8992706 octets (8.6 MB) ecrits au total
+16:56:11/   . Ecrit: P.F5.01.08
+16:56:11/   . Ecrit: P.F5.02.08
+16:56:11/ 13520985092 octets lus, 2 repartiteurs UDP relances jusqu'a 17:00:07
+16:56:21/     6020 donnees brutes sauvegardees x 2 voies
+          soit 9016786 octets (8.6 MB) ecrits au total
+16:56:36/     6020 donnees brutes sauvegardees x 2 voies
+          soit 9040866 octets (8.6 MB) ecrits au total
+16:56:37/ Delai entre lectures anormal: 11114 us, niveau piles max precedent: PCI, 0; IP, 122
+16:56:51/     6019 donnees brutes sauvegardees x 2 voies
+          soit 9064942 octets (8.6 MB) ecrits au total
+16:56:55/ Delai entre lectures anormal: 15987 us, niveau piles max precedent: PCI, 0; IP, 122
+16:57:06/     6018 donnees brutes sauvegardees x 2 voies
+          soit 9089014 octets (8.7 MB) ecrits au total
+16:57:21/     6020 donnees brutes sauvegardees x 2 voies
+          soit 9113094 octets (8.7 MB) ecrits au total
+16:57:36/     6019 donnees brutes sauvegardees x 2 voies
+          soit 9137170 octets (8.7 MB) ecrits au total
+16:57:37/ Delai entre lectures anormal: 19132 us, niveau piles max precedent: PCI, 0; IP, 122
+16:57:52/     6020 donnees brutes sauvegardees x 2 voies
+          soit 9161250 octets (8.7 MB) ecrits au total
+16:58:07/     6020 donnees brutes sauvegardees x 2 voies
+          soit 9185330 octets (8.8 MB) ecrits au total
+16:58:22/     6018 donnees brutes sauvegardees x 2 voies
+          soit 9209402 octets (8.8 MB) ecrits au total
+16:58:37/     6019 donnees brutes sauvegardees x 2 voies
+          soit 9233478 octets (8.8 MB) ecrits au total
+16:58:52/     6020 donnees brutes sauvegardees x 2 voies
+          soit 9257558 octets (8.8 MB) ecrits au total
+16:59:07/     6018 donnees brutes sauvegardees x 2 voies
+          soit 9281630 octets (8.9 MB) ecrits au total
+16:59:23/     6019 donnees brutes sauvegardees x 2 voies
+          soit 9305706 octets (8.9 MB) ecrits au total
+16:59:38/     6020 donnees brutes sauvegardees x 2 voies
+          soit 9329786 octets (8.9 MB) ecrits au total
+16:59:53/     6019 donnees brutes sauvegardees x 2 voies
+          soit 9353862 octets (8.9 MB) ecrits au total
+17:00:02/ Delai entre lectures anormal: 15129 us, niveau piles max precedent: PCI, 0; IP, 122
+17:00:07/   . Ecrit: P.F5.01.08
+17:00:07/   . Ecrit: P.F5.02.08
+17:00:07/ 14084449580 octets lus, 2 repartiteurs UDP relances jusqu'a 17:04:03
+17:00:07/ Delai entre lectures anormal: 21772 us, niveau piles max precedent: PCI, 0; IP, 122
+17:00:08/     6020 donnees brutes sauvegardees x 2 voies
+          soit 9377942 octets (8.9 MB) ecrits au total
+17:00:23/     6018 donnees brutes sauvegardees x 2 voies
+          soit 9402014 octets (9.0 MB) ecrits au total
+17:00:38/     6019 donnees brutes sauvegardees x 2 voies
+          soit 9426090 octets (9.0 MB) ecrits au total
+17:00:54/     6021 donnees brutes sauvegardees x 2 voies
+          soit 9450174 octets (9.0 MB) ecrits au total
+17:00:55/ Delai entre lectures anormal: 11205 us, niveau piles max precedent: PCI, 0; IP, 122
+17:01:03/ Delai entre lectures anormal: 11141 us, niveau piles max precedent: PCI, 0; IP, 122
+17:01:09/     6019 donnees brutes sauvegardees x 2 voies
+          soit 9474250 octets (9.0 MB) ecrits au total
+17:01:24/     6018 donnees brutes sauvegardees x 2 voies
+          soit 9498322 octets (9.1 MB) ecrits au total
+17:01:39/     6019 donnees brutes sauvegardees x 2 voies
+          soit 9522398 octets (9.1 MB) ecrits au total
+17:01:54/     6020 donnees brutes sauvegardees x 2 voies
+          soit 9546478 octets (9.1 MB) ecrits au total
+17:02:09/     6020 donnees brutes sauvegardees x 2 voies
+          soit 9570558 octets (9.1 MB) ecrits au total
+17:02:25/     6019 donnees brutes sauvegardees x 2 voies
+          soit 9594634 octets (9.2 MB) ecrits au total
+17:02:40/     6018 donnees brutes sauvegardees x 2 voies
+          soit 9618706 octets (9.2 MB) ecrits au total
+17:02:41/ Delai entre lectures anormal: 11837 us, niveau piles max precedent: PCI, 0; IP, 122
+17:02:42/ Delai entre lectures anormal: 11378 us, niveau piles max precedent: PCI, 0; IP, 122
+17:02:55/     6019 donnees brutes sauvegardees x 2 voies
+          soit 9642782 octets (9.2 MB) ecrits au total
+17:03:10/     6020 donnees brutes sauvegardees x 2 voies
+          soit 9666862 octets (9.2 MB) ecrits au total
+17:03:25/     6018 donnees brutes sauvegardees x 2 voies
+          soit 9690934 octets (9.2 MB) ecrits au total
+17:03:25/ Delai entre lectures anormal: 20058 us, niveau piles max precedent: PCI, 0; IP, 122
+17:03:25/ Delai entre lectures anormal: 21511 us, niveau piles max precedent: PCI, 0; IP, 122
+17:03:40/     6019 donnees brutes sauvegardees x 2 voies
+          soit 9715010 octets (9.3 MB) ecrits au total
+17:03:56/     6020 donnees brutes sauvegardees x 2 voies
+          soit 9739090 octets (9.3 MB) ecrits au total
+17:04:03/   . Ecrit: P.F5.01.08
+17:04:03/   . Ecrit: P.F5.02.08
+17:04:03/ 14647902516 octets lus, 2 repartiteurs UDP relances jusqu'a 17:07:59
+17:04:11/     6020 donnees brutes sauvegardees x 2 voies
+          soit 9763170 octets (9.3 MB) ecrits au total
+17:04:11/ Delai entre lectures anormal: 17791 us, niveau piles max precedent: PCI, 0; IP, 122
+17:04:26/     6019 donnees brutes sauvegardees x 2 voies
+          soit 9787246 octets (9.3 MB) ecrits au total
+17:04:27/ Delai entre lectures anormal: 15574 us, niveau piles max precedent: PCI, 0; IP, 122
+17:04:32/ Delai entre lectures anormal: 11178 us, niveau piles max precedent: PCI, 0; IP, 122
+17:04:41/     6018 donnees brutes sauvegardees x 2 voies
+          soit 9811318 octets (9.4 MB) ecrits au total
+17:04:56/     6020 donnees brutes sauvegardees x 2 voies
+          soit 9835398 octets (9.4 MB) ecrits au total
+17:05:12/     6020 donnees brutes sauvegardees x 2 voies
+          soit 9859478 octets (9.4 MB) ecrits au total
+17:05:27/     6018 donnees brutes sauvegardees x 2 voies
+          soit 9883550 octets (9.4 MB) ecrits au total
+17:05:42/     6021 donnees brutes sauvegardees x 2 voies
+          soit 9907634 octets (9.4 MB) ecrits au total
+17:05:57/     6018 donnees brutes sauvegardees x 2 voies
+          soit 9931706 octets (9.5 MB) ecrits au total
+17:06:12/     6019 donnees brutes sauvegardees x 2 voies
+          soit 9955782 octets (9.5 MB) ecrits au total
+17:06:27/     6020 donnees brutes sauvegardees x 2 voies
+          soit 9979862 octets (9.5 MB) ecrits au total
+17:06:43/     6019 donnees brutes sauvegardees x 2 voies
+          soit 10003938 octets (9.5 MB) ecrits au total
+17:06:55/ Delai entre lectures anormal: 11327 us, niveau piles max precedent: PCI, 0; IP, 122
+17:06:57/ Delai entre lectures anormal: 11355 us, niveau piles max precedent: PCI, 0; IP, 122
+17:06:58/     6018 donnees brutes sauvegardees x 2 voies
+          soit 10028010 octets (9.6 MB) ecrits au total
+17:07:13/     6020 donnees brutes sauvegardees x 2 voies
+          soit 10052090 octets (9.6 MB) ecrits au total
+17:07:28/     6020 donnees brutes sauvegardees x 2 voies
+          soit 10076170 octets (9.6 MB) ecrits au total
+17:07:28/ Delai entre lectures anormal: 18540 us, niveau piles max precedent: PCI, 0; IP, 122
+17:07:43/     6019 donnees brutes sauvegardees x 2 voies
+          soit 10100246 octets (9.6 MB) ecrits au total
+17:07:43/ Delai entre lectures anormal: 18178 us, niveau piles max precedent: PCI, 0; IP, 122
+17:07:58/     6018 donnees brutes sauvegardees x 2 voies
+          soit 10124318 octets (9.7 MB) ecrits au total
+17:07:59/   . Ecrit: P.F5.01.08
+17:07:59/   . Ecrit: P.F5.02.08
+17:07:59/ 15211361228 octets lus, 2 repartiteurs UDP relances jusqu'a 17:11:55
+17:08:04/ Delai entre lectures anormal: 11931 us, niveau piles max precedent: PCI, 0; IP, 122
+17:08:14/     6020 donnees brutes sauvegardees x 2 voies
+          soit 10148398 octets (9.7 MB) ecrits au total
+17:08:27/ Delai entre lectures anormal: 11956 us, niveau piles max precedent: PCI, 0; IP, 122
+17:08:29/     6019 donnees brutes sauvegardees x 2 voies
+          soit 10172474 octets (9.7 MB) ecrits au total
+17:08:44/     6020 donnees brutes sauvegardees x 2 voies
+          soit 10196554 octets (9.7 MB) ecrits au total
+17:08:51/ Delai entre lectures anormal: 12754 us, niveau piles max precedent: PCI, 0; IP, 122
+17:08:59/     6018 donnees brutes sauvegardees x 2 voies
+          soit 10220626 octets (9.7 MB) ecrits au total
+17:09:14/     6019 donnees brutes sauvegardees x 2 voies
+          soit 10244702 octets (9.8 MB) ecrits au total
+17:09:15/ Delai entre lectures anormal: 11173 us, niveau piles max precedent: PCI, 0; IP, 122
+17:09:29/     6020 donnees brutes sauvegardees x 2 voies
+          soit 10268782 octets (9.8 MB) ecrits au total
+17:09:35/ Delai entre lectures anormal: 11449 us, niveau piles max precedent: PCI, 0; IP, 122
+17:09:45/     6020 donnees brutes sauvegardees x 2 voies
+          soit 10292862 octets (9.8 MB) ecrits au total
+17:09:53/ Delai entre lectures anormal: 11900 us, niveau piles max precedent: PCI, 0; IP, 122
+17:09:55/ Delai entre lectures anormal: 20105 us, niveau piles max precedent: PCI, 0; IP, 122
+17:10:00/     6017 donnees brutes sauvegardees x 2 voies
+          soit 10316930 octets (9.8 MB) ecrits au total
+17:10:08/ Delai entre lectures anormal: 11830 us, niveau piles max precedent: PCI, 0; IP, 122
+17:10:15/     6020 donnees brutes sauvegardees x 2 voies
+          soit 10341010 octets (9.9 MB) ecrits au total
+17:10:30/     6020 donnees brutes sauvegardees x 2 voies
+          soit 10365090 octets (9.9 MB) ecrits au total
+17:10:45/     6019 donnees brutes sauvegardees x 2 voies
+          soit 10389166 octets (9.9 MB) ecrits au total
+17:10:48/ Delai entre lectures anormal: 12606 us, niveau piles max precedent: PCI, 0; IP, 122
+17:11:00/     6020 donnees brutes sauvegardees x 2 voies
+          soit 10413246 octets (9.9 MB) ecrits au total
+17:11:16/     6018 donnees brutes sauvegardees x 2 voies
+          soit 10437318 octets (10.0 MB) ecrits au total
+17:11:22/ Delai entre lectures anormal: 11141 us, niveau piles max precedent: PCI, 0; IP, 122
+17:11:25/ Delai entre lectures anormal: 11172 us, niveau piles max precedent: PCI, 0; IP, 122
+17:11:31/     6019 donnees brutes sauvegardees x 2 voies
+          soit 10461394 octets (10.0 MB) ecrits au total
+17:11:46/     6020 donnees brutes sauvegardees x 2 voies
+          soit 10485474 octets (10.0 MB) ecrits au total
+17:11:55/   . Ecrit: P.F5.01.08
+17:11:55/   . Ecrit: P.F5.02.08
+17:11:55/ 15774828604 octets lus, 2 repartiteurs UDP relances jusqu'a 17:15:51
+17:12:01/     6018 donnees brutes sauvegardees x 2 voies
+          soit 10509546 octets (10.0 MB) ecrits au total
+17:12:16/     6020 donnees brutes sauvegardees x 2 voies
+          soit 10533626 octets (10.0 MB) ecrits au total
+17:12:31/     6019 donnees brutes sauvegardees x 2 voies
+          soit 10557702 octets (10.1 MB) ecrits au total
+17:12:47/     6020 donnees brutes sauvegardees x 2 voies
+          soit 10581782 octets (10.1 MB) ecrits au total
+17:12:55/ Delai entre lectures anormal: 26356 us, niveau piles max precedent: PCI, 0; IP, 122
+17:13:02/     6018 donnees brutes sauvegardees x 2 voies
+          soit 10605854 octets (10.1 MB) ecrits au total
+17:13:17/     6019 donnees brutes sauvegardees x 2 voies
+          soit 10629930 octets (10.1 MB) ecrits au total
+17:13:25/ Delai entre lectures anormal: 12107 us, niveau piles max precedent: PCI, 0; IP, 122
+17:13:32/     6020 donnees brutes sauvegardees x 2 voies
+          soit 10654010 octets (10.2 MB) ecrits au total
+17:13:47/     6020 donnees brutes sauvegardees x 2 voies
+          soit 10678090 octets (10.2 MB) ecrits au total
+17:14:02/     6019 donnees brutes sauvegardees x 2 voies
+          soit 10702166 octets (10.2 MB) ecrits au total
+17:14:03/ Delai entre lectures anormal: 11458 us, niveau piles max precedent: PCI, 0; IP, 122
+17:14:18/     6018 donnees brutes sauvegardees x 2 voies
+          soit 10726238 octets (10.2 MB) ecrits au total
+17:14:33/     6019 donnees brutes sauvegardees x 2 voies
+          soit 10750314 octets (10.3 MB) ecrits au total
+17:14:48/     6020 donnees brutes sauvegardees x 2 voies
+          soit 10774394 octets (10.3 MB) ecrits au total
+17:15:03/     6018 donnees brutes sauvegardees x 2 voies
+          soit 10798466 octets (10.3 MB) ecrits au total
+17:15:03/ Delai entre lectures anormal: 18018 us, niveau piles max precedent: PCI, 0; IP, 122
+17:15:09/ Delai entre lectures anormal: 12592 us, niveau piles max precedent: PCI, 0; IP, 122
+17:15:18/     6019 donnees brutes sauvegardees x 2 voies
+          soit 10822542 octets (10.3 MB) ecrits au total
+17:15:33/     6020 donnees brutes sauvegardees x 2 voies
+          soit 10846622 octets (10.3 MB) ecrits au total
+17:15:49/     6020 donnees brutes sauvegardees x 2 voies
+          soit 10870702 octets (10.4 MB) ecrits au total
+17:15:51/   . Ecrit: P.F5.01.08
+17:15:51/   . Ecrit: P.F5.02.08
+17:15:51/ 16338288760 octets lus, 2 repartiteurs UDP relances jusqu'a 17:19:47
+17:15:52/ Delai entre lectures anormal: 11892 us, niveau piles max precedent: PCI, 0; IP, 122
+17:16:04/     6019 donnees brutes sauvegardees x 2 voies
+          soit 10894778 octets (10.4 MB) ecrits au total
+17:16:06/ Delai entre lectures anormal: 11284 us, niveau piles max precedent: PCI, 0; IP, 122
+17:16:19/     6018 donnees brutes sauvegardees x 2 voies
+          soit 10918850 octets (10.4 MB) ecrits au total
+17:16:34/     6020 donnees brutes sauvegardees x 2 voies
+          soit 10942930 octets (10.4 MB) ecrits au total
+17:16:43/ Delai entre lectures anormal: 11960 us, niveau piles max precedent: PCI, 0; IP, 122
+17:16:49/     6019 donnees brutes sauvegardees x 2 voies
+          soit 10967006 octets (10.5 MB) ecrits au total
+17:17:04/     6020 donnees brutes sauvegardees x 2 voies
+          soit 10991086 octets (10.5 MB) ecrits au total
+17:17:04/ Delai entre lectures anormal: 11019 us, niveau piles max precedent: PCI, 0; IP, 122
+17:17:20/     6020 donnees brutes sauvegardees x 2 voies
+          soit 11015166 octets (10.5 MB) ecrits au total
+17:17:35/     6017 donnees brutes sauvegardees x 2 voies
+          soit 11039234 octets (10.5 MB) ecrits au total
+17:17:50/     6021 donnees brutes sauvegardees x 2 voies
+          soit 11063318 octets (10.6 MB) ecrits au total
+17:17:55/ Delai entre lectures anormal: 13863 us, niveau piles max precedent: PCI, 0; IP, 122
+17:18:05/     6019 donnees brutes sauvegardees x 2 voies
+          soit 11087394 octets (10.6 MB) ecrits au total
+17:18:20/     6019 donnees brutes sauvegardees x 2 voies
+          soit 11111470 octets (10.6 MB) ecrits au total
+17:18:35/     6019 donnees brutes sauvegardees x 2 voies
+          soit 11135546 octets (10.6 MB) ecrits au total
+17:18:35/ Delai entre lectures anormal: 19180 us, niveau piles max precedent: PCI, 0; IP, 122
+17:18:51/     6019 donnees brutes sauvegardees x 2 voies
+          soit 11159622 octets (10.6 MB) ecrits au total
+17:19:06/     6020 donnees brutes sauvegardees x 2 voies
+          soit 11183702 octets (10.7 MB) ecrits au total
+17:19:18/ Delai entre lectures anormal: 11918 us, niveau piles max precedent: PCI, 0; IP, 122
+17:19:21/     6019 donnees brutes sauvegardees x 2 voies
+          soit 11207778 octets (10.7 MB) ecrits au total
+17:19:36/     6018 donnees brutes sauvegardees x 2 voies
+          soit 11231850 octets (10.7 MB) ecrits au total
+17:19:47/   . Ecrit: P.F5.01.08
+17:19:47/   . Ecrit: P.F5.02.08
+17:19:47/ 16901751804 octets lus, 2 repartiteurs UDP relances jusqu'a 17:23:43
+17:19:51/     6020 donnees brutes sauvegardees x 2 voies
+          soit 11255930 octets (10.7 MB) ecrits au total
+17:20:06/     6019 donnees brutes sauvegardees x 2 voies
+          soit 11280006 octets (10.8 MB) ecrits au total
+17:20:22/     6020 donnees brutes sauvegardees x 2 voies
+          soit 11304086 octets (10.8 MB) ecrits au total
+17:20:31/ Delai entre lectures anormal: 11305 us, niveau piles max precedent: PCI, 0; IP, 122
+17:20:37/     6018 donnees brutes sauvegardees x 2 voies
+          soit 11328158 octets (10.8 MB) ecrits au total
+17:20:52/     6019 donnees brutes sauvegardees x 2 voies
+          soit 11352234 octets (10.8 MB) ecrits au total
+17:21:07/     6020 donnees brutes sauvegardees x 2 voies
+          soit 11376314 octets (10.8 MB) ecrits au total
+17:21:22/     6020 donnees brutes sauvegardees x 2 voies
+          soit 11400394 octets (10.9 MB) ecrits au total
+17:21:25/ Delai entre lectures anormal: 20329 us, niveau piles max precedent: PCI, 0; IP, 122
+17:21:37/     6019 donnees brutes sauvegardees x 2 voies
+          soit 11424470 octets (10.9 MB) ecrits au total
+17:21:53/     6018 donnees brutes sauvegardees x 2 voies
+          soit 11448542 octets (10.9 MB) ecrits au total
+17:22:08/     6020 donnees brutes sauvegardees x 2 voies
+          soit 11472622 octets (10.9 MB) ecrits au total
+17:22:23/     6019 donnees brutes sauvegardees x 2 voies
+          soit 11496698 octets (11.0 MB) ecrits au total
+17:22:38/     6020 donnees brutes sauvegardees x 2 voies
+          soit 11520778 octets (11.0 MB) ecrits au total
+17:22:38/ Delai entre lectures anormal: 19374 us, niveau piles max precedent: PCI, 0; IP, 122
+17:22:53/     6018 donnees brutes sauvegardees x 2 voies
+          soit 11544850 octets (11.0 MB) ecrits au total
+17:23:08/     6019 donnees brutes sauvegardees x 2 voies
+          soit 11568926 octets (11.0 MB) ecrits au total
+17:23:24/     6020 donnees brutes sauvegardees x 2 voies
+          soit 11593006 octets (11.1 MB) ecrits au total
+17:23:39/     6019 donnees brutes sauvegardees x 2 voies
+          soit 11617082 octets (11.1 MB) ecrits au total
+17:23:43/   . Ecrit: P.F5.01.08
+17:23:43/   . Ecrit: P.F5.02.08
+17:23:43/ 17465216292 octets lus, 2 repartiteurs UDP relances jusqu'a 17:27:39
+17:23:46/ Delai entre lectures anormal: 11548 us, niveau piles max precedent: PCI, 0; IP, 122
+17:23:54/     6019 donnees brutes sauvegardees x 2 voies
+          soit 11641158 octets (11.1 MB) ecrits au total
+17:24:09/     6019 donnees brutes sauvegardees x 2 voies
+          soit 11665234 octets (11.1 MB) ecrits au total
+17:24:24/     6020 donnees brutes sauvegardees x 2 voies
+          soit 11689314 octets (11.1 MB) ecrits au total
+17:24:24/ Delai entre lectures anormal: 18321 us, niveau piles max precedent: PCI, 0; IP, 122
+17:24:25/ Delai entre lectures anormal: 14801 us, niveau piles max precedent: PCI, 0; IP, 122
+17:24:39/     6020 donnees brutes sauvegardees x 2 voies
+          soit 11713394 octets (11.2 MB) ecrits au total
+17:24:55/     6019 donnees brutes sauvegardees x 2 voies
+          soit 11737470 octets (11.2 MB) ecrits au total
+17:24:55/ Delai entre lectures anormal: 17979 us, niveau piles max precedent: PCI, 0; IP, 122
+17:25:10/     6018 donnees brutes sauvegardees x 2 voies
+          soit 11761542 octets (11.2 MB) ecrits au total
+17:25:21/ Delai entre lectures anormal: 11345 us, niveau piles max precedent: PCI, 0; IP, 122
+17:25:25/     6020 donnees brutes sauvegardees x 2 voies
+          soit 11785622 octets (11.2 MB) ecrits au total
+17:25:40/     6019 donnees brutes sauvegardees x 2 voies
+          soit 11809698 octets (11.3 MB) ecrits au total
+17:25:55/     6020 donnees brutes sauvegardees x 2 voies
+          soit 11833778 octets (11.3 MB) ecrits au total
+17:26:10/     6017 donnees brutes sauvegardees x 2 voies
+          soit 11857846 octets (11.3 MB) ecrits au total
+17:26:13/ Delai entre lectures anormal: 12537 us, niveau piles max precedent: PCI, 0; IP, 122
+17:26:26/     6020 donnees brutes sauvegardees x 2 voies
+          soit 11881926 octets (11.3 MB) ecrits au total
+17:26:26/ Delai entre lectures anormal: 19201 us, niveau piles max precedent: PCI, 0; IP, 122
+17:26:41/     6020 donnees brutes sauvegardees x 2 voies
+          soit 11906006 octets (11.4 MB) ecrits au total
+17:26:41/ Delai entre lectures anormal: 17943 us, niveau piles max precedent: PCI, 0; IP, 122
+17:26:56/     6019 donnees brutes sauvegardees x 2 voies
+          soit 11930082 octets (11.4 MB) ecrits au total
+17:27:00/ Delai entre lectures anormal: 11742 us, niveau piles max precedent: PCI, 0; IP, 122
+17:27:11/     6018 donnees brutes sauvegardees x 2 voies
+          soit 11954154 octets (11.4 MB) ecrits au total
+17:27:26/     6020 donnees brutes sauvegardees x 2 voies
+          soit 11978234 octets (11.4 MB) ecrits au total
+17:27:39/   . Ecrit: P.F5.01.08
+17:27:39/   . Ecrit: P.F5.02.08
+17:27:39/ 18028678860 octets lus, 2 repartiteurs UDP relances jusqu'a 17:31:35
+17:27:42/     6019 donnees brutes sauvegardees x 2 voies
+          soit 12002310 octets (11.4 MB) ecrits au total
+17:27:57/     6020 donnees brutes sauvegardees x 2 voies
+          soit 12026390 octets (11.5 MB) ecrits au total
+17:28:12/     6018 donnees brutes sauvegardees x 2 voies
+          soit 12050462 octets (11.5 MB) ecrits au total
+17:28:13/ Delai entre lectures anormal: 13333 us, niveau piles max precedent: PCI, 0; IP, 122
+17:28:27/     6019 donnees brutes sauvegardees x 2 voies
+          soit 12074538 octets (11.5 MB) ecrits au total
+17:28:42/     6021 donnees brutes sauvegardees x 2 voies
+          soit 12098622 octets (11.5 MB) ecrits au total
+17:28:57/     6017 donnees brutes sauvegardees x 2 voies
+          soit 12122690 octets (11.6 MB) ecrits au total
+17:29:13/     6019 donnees brutes sauvegardees x 2 voies
+          soit 12146766 octets (11.6 MB) ecrits au total
+17:29:24/ Delai entre lectures anormal: 11392 us, niveau piles max precedent: PCI, 0; IP, 122
+17:29:25/ Delai entre lectures anormal: 20040 us, niveau piles max precedent: PCI, 0; IP, 122
+17:29:28/     6021 donnees brutes sauvegardees x 2 voies
+          soit 12170850 octets (11.6 MB) ecrits au total
+17:29:29/ Delai entre lectures anormal: 13085 us, niveau piles max precedent: PCI, 0; IP, 122
+17:29:34/ Delai entre lectures anormal: 11605 us, niveau piles max precedent: PCI, 0; IP, 122
+17:29:43/     6019 donnees brutes sauvegardees x 2 voies
+          soit 12194926 octets (11.6 MB) ecrits au total
+17:29:58/     6019 donnees brutes sauvegardees x 2 voies
+          soit 12219002 octets (11.7 MB) ecrits au total
+17:30:06/ Delai entre lectures anormal: 14325 us, niveau piles max precedent: PCI, 0; IP, 122
+17:30:13/     6019 donnees brutes sauvegardees x 2 voies
+          soit 12243078 octets (11.7 MB) ecrits au total
+17:30:28/     6019 donnees brutes sauvegardees x 2 voies
+          soit 12267154 octets (11.7 MB) ecrits au total
+17:30:32/ Delai entre lectures anormal: 11005 us, niveau piles max precedent: PCI, 0; IP, 122
+17:30:32/ Delai entre lectures anormal: 19094 us, niveau piles max precedent: PCI, 0; IP, 122
+17:30:44/     6020 donnees brutes sauvegardees x 2 voies
+          soit 12291234 octets (11.7 MB) ecrits au total
+17:30:55/ Delai entre lectures anormal: 13415 us, niveau piles max precedent: PCI, 0; IP, 122
+17:30:59/     6019 donnees brutes sauvegardees x 2 voies
+          soit 12315310 octets (11.7 MB) ecrits au total
+17:31:03/ Delai entre lectures anormal: 11966 us, niveau piles max precedent: PCI, 0; IP, 122
+17:31:14/     6018 donnees brutes sauvegardees x 2 voies
+          soit 12339382 octets (11.8 MB) ecrits au total
+17:31:20/ Delai entre lectures anormal: 12317 us, niveau piles max precedent: PCI, 0; IP, 122
+17:31:29/     6020 donnees brutes sauvegardees x 2 voies
+          soit 12363462 octets (11.8 MB) ecrits au total
+17:31:35/   . Ecrit: P.F5.01.08
+17:31:35/   . Ecrit: P.F5.02.08
+17:31:35/ 18592140460 octets lus, 2 repartiteurs UDP relances jusqu'a 17:35:31
+17:31:44/     6019 donnees brutes sauvegardees x 2 voies
+          soit 12387538 octets (11.8 MB) ecrits au total
+17:31:59/     6020 donnees brutes sauvegardees x 2 voies
+          soit 12411618 octets (11.8 MB) ecrits au total
+17:32:12/ Delai entre lectures anormal: 14819 us, niveau piles max precedent: PCI, 0; IP, 122
+17:32:15/     6018 donnees brutes sauvegardees x 2 voies
+          soit 12435690 octets (11.9 MB) ecrits au total
+17:32:16/ Delai entre lectures anormal: 16913 us, niveau piles max precedent: PCI, 0; IP, 122
+17:32:30/     6020 donnees brutes sauvegardees x 2 voies
+          soit 12459770 octets (11.9 MB) ecrits au total
+17:32:45/     6019 donnees brutes sauvegardees x 2 voies
+          soit 12483846 octets (11.9 MB) ecrits au total
+17:33:00/     6020 donnees brutes sauvegardees x 2 voies
+          soit 12507926 octets (11.9 MB) ecrits au total
+17:33:15/     6020 donnees brutes sauvegardees x 2 voies
+          soit 12532006 octets (12.0 MB) ecrits au total
+17:33:30/     6017 donnees brutes sauvegardees x 2 voies
+          soit 12556074 octets (12.0 MB) ecrits au total
+17:33:46/     6020 donnees brutes sauvegardees x 2 voies
+          soit 12580154 octets (12.0 MB) ecrits au total
+17:33:55/ Delai entre lectures anormal: 11205 us, niveau piles max precedent: PCI, 0; IP, 122
+17:34:01/     6020 donnees brutes sauvegardees x 2 voies
+          soit 12604234 octets (12.0 MB) ecrits au total
+17:34:16/     6018 donnees brutes sauvegardees x 2 voies
+          soit 12628306 octets (12.0 MB) ecrits au total
+17:34:31/     6019 donnees brutes sauvegardees x 2 voies
+          soit 12652382 octets (12.1 MB) ecrits au total
+17:34:46/     6020 donnees brutes sauvegardees x 2 voies
+          soit 12676462 octets (12.1 MB) ecrits au total
+17:34:47/ Delai entre lectures anormal: 12330 us, niveau piles max precedent: PCI, 0; IP, 122
+17:35:01/     6019 donnees brutes sauvegardees x 2 voies
+          soit 12700538 octets (12.1 MB) ecrits au total
+17:35:17/     6020 donnees brutes sauvegardees x 2 voies
+          soit 12724618 octets (12.1 MB) ecrits au total
+17:35:31/   . Ecrit: P.F5.01.08
+17:35:31/   . Ecrit: P.F5.02.08
+17:35:31/ 19155604948 octets lus, 2 repartiteurs UDP relances jusqu'a 17:39:27
+17:35:31/ Delai entre lectures anormal: 22018 us, niveau piles max precedent: PCI, 0; IP, 122
+17:35:32/     6020 donnees brutes sauvegardees x 2 voies
+          soit 12748698 octets (12.2 MB) ecrits au total
+17:35:47/     6017 donnees brutes sauvegardees x 2 voies
+          soit 12772766 octets (12.2 MB) ecrits au total
+17:36:02/     6020 donnees brutes sauvegardees x 2 voies
+          soit 12796846 octets (12.2 MB) ecrits au total
+17:36:17/     6018 donnees brutes sauvegardees x 2 voies
+          soit 12820918 octets (12.2 MB) ecrits au total
+17:36:32/     6020 donnees brutes sauvegardees x 2 voies
+          soit 12844998 octets (12.2 MB) ecrits au total
+17:36:47/ Delai entre lectures anormal: 11982 us, niveau piles max precedent: PCI, 0; IP, 122
+17:36:48/     6019 donnees brutes sauvegardees x 2 voies
+          soit 12869074 octets (12.3 MB) ecrits au total
+17:37:03/     6020 donnees brutes sauvegardees x 2 voies
+          soit 12893154 octets (12.3 MB) ecrits au total
+17:37:15/ Delai entre lectures anormal: 12418 us, niveau piles max precedent: PCI, 0; IP, 122
+17:37:18/     6019 donnees brutes sauvegardees x 2 voies
+          soit 12917230 octets (12.3 MB) ecrits au total
+17:37:25/ Delai entre lectures anormal: 12974 us, niveau piles max precedent: PCI, 0; IP, 122
+17:37:33/     6020 donnees brutes sauvegardees x 2 voies
+          soit 12941310 octets (12.3 MB) ecrits au total
+17:37:48/     6019 donnees brutes sauvegardees x 2 voies
+          soit 12965386 octets (12.4 MB) ecrits au total
+17:38:03/     6018 donnees brutes sauvegardees x 2 voies
+          soit 12989458 octets (12.4 MB) ecrits au total
+17:38:16/ Delai entre lectures anormal: 11732 us, niveau piles max precedent: PCI, 0; IP, 122
+17:38:19/     6020 donnees brutes sauvegardees x 2 voies
+          soit 13013538 octets (12.4 MB) ecrits au total
+17:38:34/     6020 donnees brutes sauvegardees x 2 voies
+          soit 13037618 octets (12.4 MB) ecrits au total
+17:38:49/     6017 donnees brutes sauvegardees x 2 voies
+          soit 13061686 octets (12.5 MB) ecrits au total
+17:39:04/     6020 donnees brutes sauvegardees x 2 voies
+          soit 13085766 octets (12.5 MB) ecrits au total
+17:39:19/     6019 donnees brutes sauvegardees x 2 voies
+          soit 13109842 octets (12.5 MB) ecrits au total
+17:39:27/   . Ecrit: P.F5.01.08
+17:39:27/   . Ecrit: P.F5.02.08
+17:39:27/ 19719054996 octets lus, 2 repartiteurs UDP relances jusqu'a 17:43:23
+17:39:34/     6020 donnees brutes sauvegardees x 2 voies
+          soit 13133922 octets (12.5 MB) ecrits au total
+17:39:50/     6018 donnees brutes sauvegardees x 2 voies
+          soit 13157994 octets (12.5 MB) ecrits au total
+17:40:05/     6019 donnees brutes sauvegardees x 2 voies
+          soit 13182070 octets (12.6 MB) ecrits au total
+17:40:20/     6021 donnees brutes sauvegardees x 2 voies
+          soit 13206154 octets (12.6 MB) ecrits au total
+17:40:35/     6019 donnees brutes sauvegardees x 2 voies
+          soit 13230230 octets (12.6 MB) ecrits au total
+17:40:36/ Delai entre lectures anormal: 15164 us, niveau piles max precedent: PCI, 0; IP, 122
+17:40:50/     6020 donnees brutes sauvegardees x 2 voies
+          soit 13254310 octets (12.6 MB) ecrits au total
+17:41:05/     6018 donnees brutes sauvegardees x 2 voies
+          soit 13278382 octets (12.7 MB) ecrits au total
+17:41:21/     6019 donnees brutes sauvegardees x 2 voies
+          soit 13302458 octets (12.7 MB) ecrits au total
+17:41:36/     6020 donnees brutes sauvegardees x 2 voies
+          soit 13326538 octets (12.7 MB) ecrits au total
+17:41:51/     6018 donnees brutes sauvegardees x 2 voies
+          soit 13350610 octets (12.7 MB) ecrits au total
+17:42:06/     6019 donnees brutes sauvegardees x 2 voies
+          soit 13374686 octets (12.8 MB) ecrits au total
+17:42:07/ Delai entre lectures anormal: 12219 us, niveau piles max precedent: PCI, 0; IP, 122
+17:42:21/     6020 donnees brutes sauvegardees x 2 voies
+          soit 13398766 octets (12.8 MB) ecrits au total
+17:42:36/     6019 donnees brutes sauvegardees x 2 voies
+          soit 13422842 octets (12.8 MB) ecrits au total
+17:42:37/ Delai entre lectures anormal: 19881 us, niveau piles max precedent: PCI, 0; IP, 122
+17:42:52/     6020 donnees brutes sauvegardees x 2 voies
+          soit 13446922 octets (12.8 MB) ecrits au total
+17:43:07/     6020 donnees brutes sauvegardees x 2 voies
+          soit 13471002 octets (12.8 MB) ecrits au total
+17:43:12/ Delai entre lectures anormal: 11008 us, niveau piles max precedent: PCI, 0; IP, 122
+17:43:13/ Delai entre lectures anormal: 11355 us, niveau piles max precedent: PCI, 0; IP, 122
+17:43:22/     6018 donnees brutes sauvegardees x 2 voies
+          soit 13495074 octets (12.9 MB) ecrits au total
+17:43:23/   . Ecrit: P.F5.01.08
+17:43:23/   . Ecrit: P.F5.02.08
+17:43:23/ 20282516596 octets lus, 2 repartiteurs UDP relances jusqu'a 17:47:19
+17:43:37/     6018 donnees brutes sauvegardees x 2 voies
+          soit 13519146 octets (12.9 MB) ecrits au total
+17:43:52/     6021 donnees brutes sauvegardees x 2 voies
+          soit 13543230 octets (12.9 MB) ecrits au total
+17:43:55/ Delai entre lectures anormal: 16447 us, niveau piles max precedent: PCI, 0; IP, 122
+17:44:07/     6017 donnees brutes sauvegardees x 2 voies
+          soit 13567298 octets (12.9 MB) ecrits au total
+17:44:23/     6020 donnees brutes sauvegardees x 2 voies
+          soit 13591378 octets (13.0 MB) ecrits au total
+17:44:38/     6020 donnees brutes sauvegardees x 2 voies
+          soit 13615458 octets (13.0 MB) ecrits au total
+17:44:53/     6019 donnees brutes sauvegardees x 2 voies
+          soit 13639534 octets (13.0 MB) ecrits au total
+17:44:53/ Delai entre lectures anormal: 17729 us, niveau piles max precedent: PCI, 0; IP, 122
+17:45:08/     6018 donnees brutes sauvegardees x 2 voies
+          soit 13663606 octets (13.0 MB) ecrits au total
+17:45:23/     6020 donnees brutes sauvegardees x 2 voies
+          soit 13687686 octets (13.1 MB) ecrits au total
+17:45:38/     6019 donnees brutes sauvegardees x 2 voies
+          soit 13711762 octets (13.1 MB) ecrits au total
+17:45:39/ Delai entre lectures anormal: 20024 us, niveau piles max precedent: PCI, 0; IP, 122
+17:45:41/ Delai entre lectures anormal: 14798 us, niveau piles max precedent: PCI, 0; IP, 122
+17:45:47/ Fin de la lecture demandee par l'utilisateur
+17:45:47/ Lecture des donnees terminee
+17:45:47/ Declenchement laisse suspendu
