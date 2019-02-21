@@ -20,7 +20,7 @@ plt.close('all')
 #==============================================================================
 # BEGIN SCRIPTS
 #==============================================================================
-data_path = data_dir + '/tb19m004/tb19m004_S00'
+data_path = data_dir + '/tb20m004/tb20m004_S00'
 fs, raw_stream = read_ac_data(data_path, 0)
 
 N = raw_stream.shape[0]
@@ -51,9 +51,9 @@ pos_stream = hp_stream
 pos_stream[pos_stream < 0] = 1e-13
 
 plt.figure('filtered stream')
-#plt.plot(time_array[:ind_off], hp_stream[:ind_off])
-plt.plot(time_array[:ind_off], pos_stream[:ind_off])
-plt.yscale('log')
+plt.plot(time_array[:ind_off], hp_stream[:ind_off])
+#plt.plot(time_array[:ind_off], pos_stream[:ind_off])
+#plt.yscale('log')
 plt.grid(True)
 
 thresh = 3e-7 #V
