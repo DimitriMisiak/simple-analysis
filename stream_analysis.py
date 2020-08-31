@@ -20,7 +20,7 @@ plt.close('all')
 #==============================================================================
 # BEGIN SCRIPTS
 #==============================================================================
-data_path = data_dir + '/tb20m004/tb20m004_S00'
+data_path = data_dir + '/tb19m002/tb19m002_S00'
 fs, raw_stream = read_ac_data(data_path, 0)
 
 N = raw_stream.shape[0]
@@ -56,7 +56,7 @@ plt.plot(time_array[:ind_off], hp_stream[:ind_off])
 #plt.yscale('log')
 plt.grid(True)
 
-thresh = 3e-7 #V
+thresh = 4e-7 #V
 plt.axhline(thresh, ls='--', color='red')
 
 ### locating local maxima above given threshold
@@ -217,14 +217,15 @@ for time in time_event:
 
 amp_event = hp_stream[loc_event]
 
-
+print 'DONE'
 # ENERGY SPECTRUM !
 plt.close('energy spectrum')
 plt.figure('energy spectrum')
 plt.hist(amp_event, bins=20000)
 plt.xscale('log')
 plt.yscale('log')
-
+#
 plt.figure('time event')
 plt.plot(time_event, amp_event, ls='none', marker='+')
 plt.grid(True)
+

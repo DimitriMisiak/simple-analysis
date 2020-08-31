@@ -11,7 +11,7 @@ Also extract the output directory path in the variable 'output_dir'.
 
 import os
 import sys
-import ConfigParser
+import configparser
 
 
 #print __file__
@@ -28,7 +28,7 @@ def custom_import():
     cfd = os.path.dirname(os.path.realpath(__file__))
     config_path = cfd + '/config.ini'
 
-    Config = ConfigParser.ConfigParser()
+    Config = configparser.ConfigParser()
     Config.read(config_path)
 
 #    ethem_path = Config.get('ethem', 'path')
